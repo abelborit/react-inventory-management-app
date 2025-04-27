@@ -1,11 +1,15 @@
 /* crear el provider que es un componente que vamos a utilizar para obtener la información de nuestro context y es quien envolverá al componente más alto para repartir la información a sus hijos. Aquí se va a definir el estado a través de una interface para ir viendo cómo quiero que se vea a futuro la aplicación */
-import { useMemo, JSX, useState, useEffect } from "react";
+import { useMemo, /* JSX, */ useState, useEffect, ReactNode } from "react";
 import { AuthContext } from "./AuthContext";
 import { supabase } from "../../supabase";
 import type { User } from "@supabase/supabase-js";
 
 interface AuthProviderProps {
-  children: JSX.Element | JSX.Element[];
+  /* Aquí se limita los children a ser solo: Un único JSX.Element - Un array de JSX.Element - NO acepta string, number, boolean, etc. */
+  // children: JSX.Element | JSX.Element[];
+
+  /* ReactNode es más flexible ya que acepta cualquier cosa que React pueda renderizar: JSX.Element - string - number - boolean - null - undefined - Un array de cualquiera de estos tipos */
+  children: ReactNode;
 }
 
 /* aquí es cómo quiero que luzca mi estado inicial que no necesariamente será el mismo que la interface del Context ya que en la función de abajo se crearán funciones (porque se hará uso de los reducers en algunas ocasiones o solo funciones simples sin reducers lo cual se puede eliminar su importación) las cuales serán añadidas al value y ahí ese value tiene que satisfacer todo lo que se solicita en la interface del Context */
@@ -29,7 +33,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   );
 
   useEffect(() => {
-    /* recibir una notificación cada vez que un evento de autenticación aparezca */
+    /* recibir una notificación cada vez que un evento de autenticación aparezca, está en https://supabase.com/docs/reference/javascript/auth-onauthstatechange */
     const { data: authSupabaseListener } = supabase.auth.onAuthStateChange(
       (event, session) => {
         try {
