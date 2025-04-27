@@ -1,13 +1,66 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Mejor compatibilidad en navegadores viejos -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+
+    <!-- SEO básico -->
+    <title>Manejo de Inventarios | React + Vite + Supabase</title>
+
+    <!-- Meta SEO -->
+    <meta
+      name="description"
+      content="Sistema de manejo de inventarios desarrollado con React + Vite + Supabase."
+    />
+    <meta name="author" content="Tu Nombre o Empresa" />
+
+    <!-- Preconexión para performance (Mejora la performance si luego se cargan fuentes de Google) -->
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+    <!-- Open Graph (para compartir en redes sociales) -->
+    <meta
+      property="og:title"
+      content="Manejo de Inventarios | React Vite Supabase App"
+    />
+    <meta
+      property="og:description"
+      content="Sistema de inventarios moderno, rápido y eficiente construido con React + Vite + Supabase."
+    />
+    <meta property="og:image" content="/vite.svg" />
+    <meta property="og:url" content="https://tusitio.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Manejo de Inventarios" />
+    <meta
+      name="twitter:description"
+      content="Sistema de inventarios moderno con React y Vite."
+    />
+    <meta name="twitter:image" content="/twitter-image.png" />
+
+    <!-- Theme Color for Mobile -->
+    <meta name="theme-color" content="#317EFB" />
   </head>
+
   <body>
+    <noscript>
+      Necesitas habilitar JavaScript para ejecutar esta aplicación.
+    </noscript>
+
     <div id="root"></div>
+
+    <!-- Cargar la aplicación -->
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
