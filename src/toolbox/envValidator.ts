@@ -70,3 +70,29 @@ export function loadExactEnvFile(mode: string): Record<string, string> {
   const parsed = dotenv.parse(fs.readFileSync(filePath));
   return parsed;
 }
+
+/**
+ * Utilidad para mostrar logs estandarizados
+ */
+export function logEnvMessage(
+  isSuccess: boolean,
+  message: string,
+  mode: string
+) {
+  // console.log(`🔵 [VITE][${mode}] ${message}\n`);
+  console.log(`${isSuccess ? "✅" : "❌"} [VITE][${mode}] ${message}`);
+}
+
+/**
+ * Definir los env permitidos (development, production, etc)
+ */
+export const allowedModes = [
+  "devLocal",
+  "development",
+  "staging",
+  "production",
+] as const;
+/* Cuando se coloca "as const", le decimos a TypeScript que "Este array y cada uno de sus valores son literales inmutables, no simplemente string genéricos." Es decir:
+  - Sin "as const" -> TypeScript interpreta allowedModes como "string[]"
+  - Con "as const" -> TypeScript interpreta allowedModes como "readonly ["devLocal", "development", "staging", "production"]" Y luego nos sirve porque luego se puede crear un tipo basado en ese array como "AllowedModeType" */
+export type AllowedModeType = (typeof allowedModes)[number];
