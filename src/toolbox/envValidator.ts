@@ -96,3 +96,6 @@ export const allowedModes = [
   - Sin "as const" -> TypeScript interpreta allowedModes como "string[]"
   - Con "as const" -> TypeScript interpreta allowedModes como "readonly ["devLocal", "development", "staging", "production"]" Y luego nos sirve porque luego se puede crear un tipo basado en ese array como "AllowedModeType" */
 export type AllowedModeType = (typeof allowedModes)[number];
+
+/* Definir en qué modos se quiere aplicar más seguridad al build */
+export const allowedSecureModes = ["production", "staging"];
