@@ -1,4 +1,6 @@
-export const light = {
+import type { DefaultTheme } from "styled-components";
+
+export const lightTheme: DefaultTheme = {
   rgbafondoanimado: "rgba(102, 102, 102, 0.2)",
   body: "#fff",
   text: "#202020",
@@ -38,7 +40,7 @@ export const light = {
   colorsubtitlecard: "#080808",
 };
 
-export const dark = {
+export const darkTheme: DefaultTheme = {
   colortitlecard: "#8C9298",
   colorsubtitlecard: "#F0F0F0",
   bgcards: "#171717",
