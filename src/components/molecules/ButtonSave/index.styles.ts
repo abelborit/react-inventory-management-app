@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const Container = styled.a<{ $bgcolor: string }>`
+export const Container = styled.a<{ $bgcolor: string; sidebarOpen: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   text-decoration: none;
-  padding: 0.6em 1.3em;
+  padding: ${({ sidebarOpen }) => (sidebarOpen ? "0.6em 1.3em" : "0.3em")};
   font-weight: 900;
   font-size: 18px;
   border: 3px solid black;

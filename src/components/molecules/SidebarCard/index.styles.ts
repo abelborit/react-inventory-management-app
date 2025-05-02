@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ sidebarOpen: boolean }>`
   width: 100%;
-  padding: 1rem;
+  padding: ${({ sidebarOpen }) => (sidebarOpen ? "1rem" : "")};
   text-align: center;
   position: relative;
 
@@ -55,9 +55,9 @@ export const Container = styled.div`
 
     .contentBtn {
       position: relative;
-      margin-left: -8px;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
   }
 `;

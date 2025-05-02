@@ -2,13 +2,17 @@ import { variables } from "../../../styles/variables";
 import { ButtonSave } from "../ButtonSave";
 import { Container } from "./index.styles";
 
-export const SidebarCard = () => {
+interface SidebarCardProps {
+  sidebarOpen: boolean;
+}
+
+export const SidebarCard = ({ sidebarOpen }: SidebarCardProps) => {
   const handleLogout = () => {
     console.log("Sesión cerrada");
   };
 
-  return (
-    <Container>
+  return sidebarOpen ? (
+    <Container sidebarOpen={sidebarOpen}>
       <span className="icon" aria-hidden="true">
         {<variables.iconoayuda />}
       </span>
@@ -27,9 +31,25 @@ export const SidebarCard = () => {
             icon="🔒"
             bgcolor="#f8f2fd"
             url=""
+            sidebarOpen={sidebarOpen}
             handleClick={handleLogout}
           />
         </div>
+      </div>
+    </Container>
+  ) : (
+    <Container sidebarOpen={sidebarOpen}>
+      <div className="contentBtn">
+        <ButtonSave
+          // title="Cerrar sesión"
+          title=""
+          // icon=""
+          icon="🔒"
+          bgcolor="#f8f2fd"
+          url=""
+          sidebarOpen={sidebarOpen}
+          handleClick={handleLogout}
+        />
       </div>
     </Container>
   );

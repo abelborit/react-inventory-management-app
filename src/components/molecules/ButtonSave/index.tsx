@@ -7,6 +7,7 @@ interface ButtonSaveProps {
   bgcolor: string;
   icon: string | ReactNode;
   url: string;
+  sidebarOpen: boolean;
   handleClick: () => void;
 }
 
@@ -15,10 +16,10 @@ export const ButtonSave = ({
   bgcolor,
   icon,
   url,
+  sidebarOpen,
   handleClick,
 }: ButtonSaveProps) => {
   return (
-    /* TODO: cuando sea mobile que sea un botón para hacer logout */
     <Container
       as="a"
       href={url}
@@ -28,6 +29,7 @@ export const ButtonSave = ({
       onClick={handleClick}
       role="button"
       aria-label={title}
+      sidebarOpen={sidebarOpen}
     >
       {icon ? (
         <IconComponent title={title} ariaHidden={false}>
