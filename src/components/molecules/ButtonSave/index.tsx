@@ -1,10 +1,11 @@
+import { ReactNode } from "react";
 import { IconComponent } from "../../atoms";
 import { Container } from "./index.styles";
 
 interface ButtonSaveProps {
   title: string;
   bgcolor: string;
-  icon: string;
+  icon: string | ReactNode;
   url: string;
   handleClick: () => void;
 }
@@ -28,11 +29,13 @@ export const ButtonSave = ({
       role="button"
       aria-label={title}
     >
-      <IconComponent title={title} ariaHidden={false}>
-        {icon}
-      </IconComponent>
+      {icon ? (
+        <IconComponent title={title} ariaHidden={false}>
+          {icon}
+        </IconComponent>
+      ) : null}
 
-      <span>{title}</span>
+      {title ? <span>{title}</span> : null}
     </Container>
   );
 };
