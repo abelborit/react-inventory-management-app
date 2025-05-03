@@ -33,7 +33,7 @@ export const SidebarLinks: SidebarLinkInterface[] = [
   {
     label: "Home",
     icon: <AiOutlineHome />,
-    to: "/",
+    to: "/home",
   },
   {
     label: "Kardex",
