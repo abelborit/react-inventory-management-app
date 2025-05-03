@@ -24,7 +24,7 @@ export const SidebarLinkItem = ({
     >
       <span className="Linkicon">{icon}</span>
 
-      <span className={sidebarOpen ? "label_ver" : "label_oculto"}>
+      <span className={sidebarOpen ? "labelVisible" : "labelHidden"}>
         {label}
       </span>
     </NavLink>
