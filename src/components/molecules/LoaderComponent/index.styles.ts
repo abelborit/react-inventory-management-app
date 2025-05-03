@@ -19,9 +19,9 @@ const squareAnimation = keyframes`
 `;
 
 export const LoaderWrapper = styled.div`
-  // background-color: #1e1e2f;
-  width: 100%;
-  height: 100%;
+  background-color: ${({ theme }) => theme.bgtotal};
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -43,7 +43,7 @@ export const LoaderSquare = styled.div`
   width: 28px;
   height: 28px;
   margin: 2px;
-  background: #f7b272;
+  background-color: ${({ theme }) => theme.bg5};
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -77,7 +77,7 @@ export const LoaderSquare = styled.div`
 
 export const LoadingText = styled.p`
   font-size: 1.5rem;
-  color: #f7b272;
+  color: ${({ theme }) => theme.bg5};
   letter-spacing: 3px;
   animation: ${pulseAnimation} 1.25s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 `;
