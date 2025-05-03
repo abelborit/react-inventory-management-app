@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "./styles/breakpoints";
+import { device } from "../../styles/breakpoints";
 
 export const Container = styled.main`
   display: grid;
@@ -9,7 +9,6 @@ export const Container = styled.main`
   color: ${({ theme }) => theme.text};
 
   .contentSidebar {
-    background-color: red;
     display: none;
   }
 

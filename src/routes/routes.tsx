@@ -1,7 +1,7 @@
 /* https://reactrouter.com/start/data/installation */
 /* ******************************************************************************************************************* */
 
-import { createHashRouter, Navigate, Outlet } from "react-router";
+import { createHashRouter, Navigate } from "react-router";
 import { LoaderComponent } from "../components/atoms/index.ts";
 // import { Error404Page } from "../pages/Error404Page/index.tsx";
 
@@ -9,7 +9,14 @@ import { LoaderComponent } from "../components/atoms/index.ts";
 export const router = createHashRouter([
   {
     path: "/",
-    element: <Outlet />,
+    // element: <Outlet />,
+    async lazy() {
+      const { InventoryManagementLayout } = await import(
+        "../layouts/InventoryManagementLayout"
+      );
+      return { Component: InventoryManagementLayout };
+    },
+    HydrateFallback: LoaderComponent,
 
     /* Cuando se entra a "/", se está haciendo Navigate antes de que React Router cargue un componente lazy. Entonces no hay ningún componente cargándose en "/", solo se está haciendo una redirección interna hacia "/home". Y el HydrateFallback (LoaderComponent) solo se muestra cuando el componente lazy todavía no está disponible. En "/" no hay un lazy que cargar. Por eso no se ve ningún LoaderComponent cuando se entra a "/" por primera vez. Solo se ve algo en "/home", porque ahí sí hay un lazy. Entonces tenemos que forzar que el primer nivel "/" también sea un componente lazy y así React Router sí muestra el LoaderComponent desde el arranque */
     // async lazy() {
