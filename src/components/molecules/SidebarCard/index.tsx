@@ -12,7 +12,7 @@ export const SidebarCard = ({ sidebarOpen }: SidebarCardProps) => {
   };
 
   return sidebarOpen ? (
-    <Container sidebarOpen={sidebarOpen}>
+    <Container $sidebarOpen={sidebarOpen}>
       <span className="icon" aria-hidden="true">
         {<variables.iconoayuda />}
       </span>
@@ -38,7 +38,7 @@ export const SidebarCard = ({ sidebarOpen }: SidebarCardProps) => {
       </div>
     </Container>
   ) : (
-    <Container sidebarOpen={sidebarOpen}>
+    <Container $sidebarOpen={sidebarOpen}>
       <div className="contentBtn">
         <ButtonSave
           // title="Cerrar sesión"

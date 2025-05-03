@@ -29,7 +29,7 @@ export const ButtonSave = ({
       onClick={handleClick}
       role="button"
       aria-label={title}
-      sidebarOpen={sidebarOpen}
+      $sidebarOpen={sidebarOpen}
     >
       {icon ? (
         <IconComponent title={title} ariaHidden={false}>

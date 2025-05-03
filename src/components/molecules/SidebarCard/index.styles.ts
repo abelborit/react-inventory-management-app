@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div<{ sidebarOpen: boolean }>`
+export const Container = styled.div<{ $sidebarOpen: boolean }>`
   width: 100%;
-  padding: ${({ sidebarOpen }) => (sidebarOpen ? "1rem" : "")};
+  padding: ${({ $sidebarOpen }) => ($sidebarOpen ? "1rem" : "")};
   text-align: center;
   position: relative;
 
