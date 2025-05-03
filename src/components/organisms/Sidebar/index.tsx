@@ -1,6 +1,6 @@
 import { variables } from "../../../styles/variables";
 import { SecondarySidebarLinks, SidebarLinks } from "../../../utils/staticData";
-import { ToggleTheme } from "../../organisms";
+import { ToggleTheme } from "../../molecules";
 import { SidebarCard, SidebarLinkItem } from "../../molecules";
 import { Container, Divider, SidebarContainer } from "./index.styles";
 

@@ -2,7 +2,7 @@
 /* ******************************************************************************************************************* */
 
 import { createHashRouter, Navigate } from "react-router";
-import { LoaderComponent } from "../components/atoms/index.ts";
+import { LoaderComponent } from "../components/molecules";
 // import { Error404Page } from "../pages/Error404Page/index.tsx";
 
 // export const router = createBrowserRouter([
