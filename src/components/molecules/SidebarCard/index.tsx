@@ -1,6 +1,6 @@
 import { ButtonSave } from "../ButtonSave";
-import { DynamicIcon } from "../DynamicIcon";
 import { Container } from "./index.styles";
+import { BsQuestionCircle } from "react-icons/bs";
 
 interface SidebarCardProps {
   sidebarOpen: boolean;
@@ -14,7 +14,7 @@ export const SidebarCard = ({ sidebarOpen }: SidebarCardProps) => {
   return sidebarOpen ? (
     <Container $sidebarOpen={sidebarOpen}>
       <span className="icon" aria-hidden="true">
-        <DynamicIcon icon="iconoayuda" propsIconContainer={{ size: 50 }} />
+        <BsQuestionCircle />
       </span>
 
       <div className="cardContent">

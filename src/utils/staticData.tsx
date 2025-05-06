@@ -1,4 +1,12 @@
-import { DynamicIcon } from "../components/molecules/DynamicIcon";
+import {
+  AiOutlineHome,
+  AiOutlineSetting,
+  BiUserCircle,
+  MdOutlineCategory,
+  MdExitToApp,
+  RiSettings3Line,
+  TbReportAnalytics,
+} from "./staticDataIcons";
 import {
   ConfigModuleInterface,
   DocumentTypeInterface,
@@ -12,17 +20,17 @@ import {
 export const UserDropdownOptions: UserDropdownOptionInterface[] = [
   {
     label: "Mi perfil",
-    icon: <DynamicIcon icon="iconoUser" />,
+    icon: <BiUserCircle />,
     type: "miperfil",
   },
   {
     label: "Configuración",
-    icon: <DynamicIcon icon="iconoSettings" />,
+    icon: <RiSettings3Line />,
     type: "configuracion",
   },
   {
     label: "Cerrar sesión",
-    icon: <DynamicIcon icon="iconoCerrarSesion" />,
+    icon: <MdExitToApp />,
     type: "cerrarsesion",
   },
 ];
@@ -31,17 +39,17 @@ export const UserDropdownOptions: UserDropdownOptionInterface[] = [
 export const SidebarLinks: SidebarLinkInterface[] = [
   {
     label: "Home",
-    icon: <DynamicIcon icon="iconohomeoutline" />,
+    icon: <AiOutlineHome />,
     to: "/home",
   },
   {
     label: "Kardex",
-    icon: <DynamicIcon icon="iconocategorias" />,
+    icon: <MdOutlineCategory />,
     to: "/kardex",
   },
   {
     label: "Reportes",
-    icon: <DynamicIcon icon="iconoreportes" />,
+    icon: <TbReportAnalytics />,
     to: "/reportes",
   },
 ];
@@ -49,7 +57,7 @@ export const SidebarLinks: SidebarLinkInterface[] = [
 export const SecondarySidebarLinks: SidebarLinkInterface[] = [
   {
     label: "Configuración",
-    icon: <DynamicIcon icon="iconosettingsoutline" />,
+    icon: <AiOutlineSetting />,
     to: "/configurar",
   },
 ];

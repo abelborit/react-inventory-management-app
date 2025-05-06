@@ -2,8 +2,8 @@ import { variables } from "../../../styles/variables";
 import { SecondarySidebarLinks, SidebarLinks } from "../../../utils/staticData";
 import { ToggleTheme } from "../../molecules";
 import { SidebarCard, SidebarLinkItem } from "../../molecules";
-import { DynamicIcon } from "../../molecules/DynamicIcon";
 import { Container, Divider, SidebarContainer } from "./index.styles";
+import { IoIosArrowForward } from "react-icons/io";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -22,7 +22,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         className="Sidebarbutton"
         onClick={handleToggleSidebar}
       >
-        <DynamicIcon icon="iconoflechaderecha" />
+        <IoIosArrowForward />
       </button>
 
       <Container $isopen={sidebarOpen} className={sidebarOpen ? "active" : ""}>
