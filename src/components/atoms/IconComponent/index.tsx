@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Icon } from "./index.styles";
 
-interface IconComponentProps {
+export interface IconComponentProps {
   children: ReactNode;
   size?: number | string; // Tamaño opcional, por defecto 24px
   title?: string; // Accesibilidad: Sirve para proporcionar una etiqueta legible por screen readers. | También puede mostrar un tooltip nativo del navegador al pasar el mouse. | Útil si el ícono tiene un propósito informativo.
