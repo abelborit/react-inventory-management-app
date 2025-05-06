@@ -53,10 +53,24 @@ export const router = createHashRouter([
   /* Ruta wildcard para rutas que no matcheen con ningun padre */
   {
     path: "*",
-    HydrateFallback: LoaderComponent, // es como un "LoaderFallback" el cual puede ser diferente por cada ruta
     async lazy() {
-      const { Error404Page } = await import("../pages/Error404Page/index.tsx");
-      return { Component: Error404Page };
+      const { InventoryManagementLayout } = await import(
+        "../layouts/InventoryManagementLayout"
+      );
+      return { Component: InventoryManagementLayout };
     },
+    HydrateFallback: LoaderComponent, // es como un "LoaderFallback" el cual puede ser diferente por cada ruta
+    children: [
+      {
+        path: "*",
+        HydrateFallback: LoaderComponent,
+        async lazy() {
+          const { Error404Page } = await import(
+            "../pages/Error404Page/index.tsx"
+          );
+          return { Component: Error404Page };
+        },
+      },
+    ],
   },
 ]);

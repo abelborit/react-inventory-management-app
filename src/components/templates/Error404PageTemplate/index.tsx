@@ -1,3 +1,9 @@
+import { Container } from "./index.styles";
+
 export const Error404PageTemplate = () => {
-  return <div>Error404PageTemplate</div>;
+  return (
+    <Container>
+      <div>Error404PageTemplate</div>
+    </Container>
+  );
 };
