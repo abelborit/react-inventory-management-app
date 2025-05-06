@@ -1,5 +1,4 @@
-import { variables } from "../styles/variables";
-import { AiOutlineHome, AiOutlineSetting } from "react-icons/ai";
+import { DynamicIcon } from "../components/molecules/DynamicIcon";
 import {
   ConfigModuleInterface,
   DocumentTypeInterface,
@@ -13,17 +12,17 @@ import {
 export const UserDropdownOptions: UserDropdownOptionInterface[] = [
   {
     label: "Mi perfil",
-    icon: <variables.iconoUser />,
+    icon: <DynamicIcon icon="iconoUser" />,
     type: "miperfil",
   },
   {
     label: "Configuración",
-    icon: <variables.iconoSettings />,
+    icon: <DynamicIcon icon="iconoSettings" />,
     type: "configuracion",
   },
   {
     label: "Cerrar sesión",
-    icon: <variables.iconoCerrarSesion />,
+    icon: <DynamicIcon icon="iconoCerrarSesion" />,
     type: "cerrarsesion",
   },
 ];
@@ -32,17 +31,17 @@ export const UserDropdownOptions: UserDropdownOptionInterface[] = [
 export const SidebarLinks: SidebarLinkInterface[] = [
   {
     label: "Home",
-    icon: <AiOutlineHome />,
+    icon: <DynamicIcon icon="iconohomeoutline" />,
     to: "/home",
   },
   {
     label: "Kardex",
-    icon: <variables.iconocategorias />,
+    icon: <DynamicIcon icon="iconocategorias" />,
     to: "/kardex",
   },
   {
     label: "Reportes",
-    icon: <variables.iconoreportes />,
+    icon: <DynamicIcon icon="iconoreportes" />,
     to: "/reportes",
   },
 ];
@@ -50,7 +49,7 @@ export const SidebarLinks: SidebarLinkInterface[] = [
 export const SecondarySidebarLinks: SidebarLinkInterface[] = [
   {
     label: "Configuración",
-    icon: <AiOutlineSetting />,
+    icon: <DynamicIcon icon="iconosettingsoutline" />,
     to: "/configurar",
   },
 ];

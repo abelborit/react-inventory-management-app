@@ -2,6 +2,7 @@ import { variables } from "../../../styles/variables";
 import { SecondarySidebarLinks, SidebarLinks } from "../../../utils/staticData";
 import { ToggleTheme } from "../../molecules";
 import { SidebarCard, SidebarLinkItem } from "../../molecules";
+import { DynamicIcon } from "../../molecules/DynamicIcon";
 import { Container, Divider, SidebarContainer } from "./index.styles";
 
 interface SidebarProps {
@@ -16,9 +17,13 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
   return (
     <SidebarContainer $isopen={sidebarOpen}>
-      <span className="Sidebarbutton" onClick={handleToggleSidebar}>
-        {<variables.iconoflechaderecha />}
-      </span>
+      <button
+        type="button"
+        className="Sidebarbutton"
+        onClick={handleToggleSidebar}
+      >
+        <DynamicIcon icon="iconoflechaderecha" />
+      </button>
 
       <Container $isopen={sidebarOpen} className={sidebarOpen ? "active" : ""}>
         <div className="Logocontent">

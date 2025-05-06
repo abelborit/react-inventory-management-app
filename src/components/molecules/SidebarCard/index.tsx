@@ -1,5 +1,5 @@
-import { variables } from "../../../styles/variables";
 import { ButtonSave } from "../ButtonSave";
+import { DynamicIcon } from "../DynamicIcon";
 import { Container } from "./index.styles";
 
 interface SidebarCardProps {
@@ -14,7 +14,7 @@ export const SidebarCard = ({ sidebarOpen }: SidebarCardProps) => {
   return sidebarOpen ? (
     <Container $sidebarOpen={sidebarOpen}>
       <span className="icon" aria-hidden="true">
-        {<variables.iconoayuda />}
+        <DynamicIcon icon="iconoayuda" propsIconContainer={{ size: 50 }} />
       </span>
 
       <div className="cardContent">
