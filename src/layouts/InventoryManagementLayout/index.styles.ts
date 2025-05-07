@@ -13,10 +13,8 @@ export const Container = styled.main`
   }
 
   .contentMenuHamburguer {
-    background-color: blue;
     display: block;
     position: absolute;
-    left: 20px;
   }
 
   @media ${device.tablet} {

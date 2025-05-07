@@ -1,5 +1,5 @@
 import { Outlet } from "react-router";
-import { Sidebar } from "../../components/organisms";
+import { MenuHamburguer, Sidebar } from "../../components/organisms";
 import { useState } from "react";
 import { Container } from "./index.styles";
 
@@ -15,7 +15,9 @@ export const InventoryManagementLayout = () => {
         />
       </section>
 
-      <section className="contentMenuHamburguer">ContentMenuHamburguer</section>
+      <section className="contentMenuHamburguer">
+        <MenuHamburguer />
+      </section>
 
       <section className="contentRoutes">
         <Outlet />
