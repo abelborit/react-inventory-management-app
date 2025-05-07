@@ -6,23 +6,39 @@ interface SidebarLinkItemProps {
   label: string;
   icon: ReactNode;
   to: string;
-  sidebarOpen: boolean;
+  sidebarOpen?: boolean;
+  isMobile?: boolean;
+  setIsMenuOpen?: () => void;
 }
 
 export const SidebarLinkItem = ({
   label,
   icon,
   to,
-  sidebarOpen,
+  sidebarOpen = false,
+  isMobile = false,
+  setIsMenuOpen = () => {},
 }: SidebarLinkItemProps) => (
-  <LinkContainer key={label} className={sidebarOpen ? "active" : ""}>
+  <LinkContainer
+    key={label}
+    className={isMobile ? "active" : sidebarOpen ? "active" : ""}
+    onClick={isMobile ? setIsMenuOpen : () => {}}
+  >
     <NavLink
       to={to}
       className={({ isActive }) => `Links ${isActive ? "active" : ""}`}
     >
       <span className="Linkicon">{icon}</span>
 
-      <span className={sidebarOpen ? "labelVisible" : "labelHidden"}>
+      <span
+        className={
+          isMobile
+            ? "labelVisible"
+            : sidebarOpen
+            ? "labelVisible"
+            : "labelHidden"
+        }
+      >
         {label}
       </span>
     </NavLink>

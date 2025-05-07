@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
-export const Container = styled.div<{ $sidebarOpen: boolean }>`
-  width: 100%;
+export const Container = styled.div<{
+  $sidebarOpen: boolean;
+  $isMobile?: boolean;
+}>`
+  width: ${({ $isMobile }) => ($isMobile ? "30%" : "100%")};
   padding: ${({ $sidebarOpen }) => ($sidebarOpen ? "1rem" : "")};
   text-align: center;
   position: relative;

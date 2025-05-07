@@ -4,15 +4,19 @@ import { BsQuestionCircle } from "react-icons/bs";
 
 interface SidebarCardProps {
   sidebarOpen: boolean;
+  isMobile?: boolean;
 }
 
-export const SidebarCard = ({ sidebarOpen }: SidebarCardProps) => {
+export const SidebarCard = ({
+  sidebarOpen,
+  isMobile = false,
+}: SidebarCardProps) => {
   const handleLogout = () => {
     console.log("Sesión cerrada");
   };
 
   return sidebarOpen ? (
-    <Container $sidebarOpen={sidebarOpen}>
+    <Container $sidebarOpen={sidebarOpen} $isMobile={isMobile}>
       <span className="icon" aria-hidden="true">
         <BsQuestionCircle />
       </span>
