@@ -1,5 +1,6 @@
 import { NavLink } from "react-router";
 import { ReactNode } from "react";
+import { LinkContainer } from "./index.styles";
 
 interface SidebarLinkItemProps {
   label: string;
@@ -14,10 +15,7 @@ export const SidebarLinkItem = ({
   to,
   sidebarOpen,
 }: SidebarLinkItemProps) => (
-  <div
-    key={label}
-    className={sidebarOpen ? "LinkContainer active" : "LinkContainer"}
-  >
+  <LinkContainer key={label} className={sidebarOpen ? "active" : ""}>
     <NavLink
       to={to}
       className={({ isActive }) => `Links ${isActive ? "active" : ""}`}
@@ -28,5 +26,5 @@ export const SidebarLinkItem = ({
         {label}
       </span>
     </NavLink>
-  </div>
+  </LinkContainer>
 );
