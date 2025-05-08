@@ -1,16 +1,12 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { variables } from "../../../styles/variables";
 
 export const Container = styled.div``;
 
-export const Checkbox = styled.input`
-  display: none;
-`;
-
-export const Toggle = styled.label<{ $isOpen: boolean }>`
+export const ToggleButton = styled.button<{ $isOpen: boolean }>`
   position: fixed;
-  top: 20px;
-  left: ${({ $isOpen }) => ($isOpen ? "90%" : "20px")};
+  top: 26px;
+  left: ${({ $isOpen }) => ($isOpen ? "calc(100% - 3rem)" : "20px")};
   z-index: 1002;
   width: 36px;
   height: 36px;
@@ -19,64 +15,60 @@ export const Toggle = styled.label<{ $isOpen: boolean }>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
-  transition: all 0.5s ease;
+  gap: ${({ $isOpen }) => ($isOpen ? "0px" : "8px")};
+  background: transparent;
+  border: none;
+  transition: left 0.5s ease;
 
-  .bars {
+  .bar {
+    display: block;
     width: 100%;
     height: 4px;
     background-color: ${({ theme }) => theme.bg5};
     border-radius: 4px;
+    transition: transform 0.5s ease, width 0.5s ease;
   }
 
-  #bar2 {
-    transition-duration: 0.8s;
-  }
-
-  #bar1,
-  #bar3 {
-    width: 70%;
-  }
-
-  input:checked + & .bars {
-    position: absolute;
-    transition-duration: 0.5s;
-  }
-
-  input:checked + & #bar2 {
-    transform: scaleX(0);
-    transition-duration: 0.5s;
-  }
-
-  input:checked + & #bar1 {
-    width: 100%;
-    transform: rotate(45deg);
-    transition-duration: 0.5s;
-  }
-
-  input:checked + & #bar3 {
-    width: 100%;
-    transform: rotate(-45deg);
-    transition-duration: 0.5s;
-  }
-
-  input:checked + & {
-    transform: rotate(180deg);
-    transition-duration: 0.5s;
-  }
+  ${({ $isOpen }) =>
+    $isOpen
+      ? css`
+          .bar#bar1 {
+            width: 100%;
+            transform: rotate(45deg) translate(3px, 3px);
+          }
+          .bar#bar2 {
+            width: 0;
+            transform: scaleX(0);
+          }
+          .bar#bar3 {
+            width: 100%;
+            transform: rotate(-45deg) translate(2.5px, -2.5px);
+          }
+        `
+      : css`
+          .bar#bar1,
+          .bar#bar3 {
+            width: 70%;
+            transform: none;
+          }
+          .bar#bar2 {
+            width: 100%;
+            transform: none;
+          }
+        `}
 `;
 
-export const SidebarMobile = styled.div<{ $isopen: boolean }>`
+export const SidebarMobile = styled.div<{ $isOpen: boolean }>`
   position: fixed;
   top: 0;
-  left: ${({ $isopen }) => ($isopen ? "0" : "-100%")};
+  left: ${({ $isOpen }) => ($isOpen ? "0" : "-100%")};
   width: 100%;
   height: 100%;
   background-color: ${(props) => props.theme.bg};
   color: ${(props) => props.theme.text};
   z-index: 1001;
   padding: 20px;
-  transition: left 0.4s ease-in-out;
+  transition: left 0.5s ease;
   overflow-y: auto;
 
   .Logocontent {
@@ -91,18 +83,19 @@ export const SidebarMobile = styled.div<{ $isopen: boolean }>`
     }
 
     h2 {
+      margin-right: 2rem;
       font-size: 1.75rem;
     }
 
     @keyframes flotar {
       0% {
-        transform: translate(0, 0px);
+        transform: translateY(0);
       }
       50% {
-        transform: translate(0, 4px);
+        transform: translateY(4px);
       }
       100% {
-        transform: translate(0, -0px);
+        transform: translateY(0);
       }
     }
   }

@@ -2,7 +2,12 @@ import { useState } from "react";
 import { SidebarLinks, SecondarySidebarLinks } from "../../../utils/staticData";
 import { SidebarLinkItem, SidebarCard, ToggleTheme } from "../../molecules";
 import { variables } from "../../../styles/variables";
-import { Checkbox, Container, Divider, SidebarMobile, Toggle } from "./index.styles";
+import {
+  Container,
+  Divider,
+  SidebarMobile,
+  ToggleButton,
+} from "./index.styles";
 
 export const MenuHamburguer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,20 +22,13 @@ export const MenuHamburguer = () => {
 
   return (
     <Container>
-      <Checkbox
-        type="checkbox"
-        id="checkbox"
-        checked={isOpen}
-        onChange={handleToggleMenu}
-      />
+      <ToggleButton onClick={handleToggleMenu} $isOpen={isOpen}>
+        <span className="bar" id="bar1" />
+        <span className="bar" id="bar2" />
+        <span className="bar" id="bar3" />
+      </ToggleButton>
 
-      <Toggle htmlFor="checkbox" className="toggle" $isOpen={isOpen}>
-        <div className="bars" id="bar1"></div>
-        <div className="bars" id="bar2"></div>
-        <div className="bars" id="bar3"></div>
-      </Toggle>
-
-      <SidebarMobile $isopen={isOpen}>
+      <SidebarMobile $isOpen={isOpen}>
         <div className="Logocontent">
           <div className="imgcontent">
             <img src={variables.logo} alt="logo" />
