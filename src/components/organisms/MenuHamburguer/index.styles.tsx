@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { variables } from "../../../styles/variables";
 
-export const Container = styled.div`
-`;
+export const Container = styled.div``;
 
 export const Checkbox = styled.input`
   display: none;
@@ -13,14 +12,14 @@ export const Toggle = styled.label<{ $isOpen: boolean }>`
   top: 20px;
   left: ${({ $isOpen }) => ($isOpen ? "90%" : "20px")};
   z-index: 1002;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   transition: all 0.5s ease;
 
   .bars {

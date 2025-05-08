@@ -4,7 +4,7 @@ export const Container = styled.div<{
   $sidebarOpen: boolean;
   $isMobile?: boolean;
 }>`
-  width: ${({ $isMobile }) => ($isMobile ? "30%" : "100%")};
+  width: ${({ $isMobile }) => ($isMobile ? "200px" : "100%")};
   padding: ${({ $sidebarOpen }) => ($sidebarOpen ? "1rem" : "")};
   text-align: center;
   position: relative;
