@@ -14,7 +14,7 @@ interface AuthProviderProps {
 
 /* aquí es cómo quiero que luzca mi estado inicial que no necesariamente será el mismo que la interface del Context ya que en la función de abajo se crearán funciones (porque se hará uso de los reducers en algunas ocasiones o solo funciones simples sin reducers lo cual se puede eliminar su importación) las cuales serán añadidas al value y ahí ese value tiene que satisfacer todo lo que se solicita en la interface del Context */
 export interface AuthProviderStateInterface {
-  userAuth: User | null;
+  userAuth: Partial<User> | null;
   loadingAuth: boolean;
   errorAuth: string | null;
 }
@@ -26,7 +26,9 @@ const INITIAL_STATE: AuthProviderStateInterface = {
 };
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [userAuth, setUserAuth] = useState<User | null>(INITIAL_STATE.userAuth);
+  const [userAuth, setUserAuth] = useState<Partial<User> | null>(
+    INITIAL_STATE.userAuth
+  );
   const [loadingAuth, setLoadingAuth] = useState(INITIAL_STATE.loadingAuth);
   const [errorAuth, setErrorAuth] = useState<string | null>(
     INITIAL_STATE.errorAuth
@@ -41,6 +43,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
           if (!session) {
             setUserAuth(null);
+            // setUserAuth({ id: "prueba" });
           } else {
             setUserAuth(session.user);
           }

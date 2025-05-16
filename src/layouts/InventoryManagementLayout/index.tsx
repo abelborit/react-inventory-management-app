@@ -1,12 +1,18 @@
-import { Outlet } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import { MenuHamburguer, Sidebar } from "../../components/organisms";
 import { useState } from "react";
 import { Container } from "./index.styles";
 import { useDeviceType } from "../../hooks/useDeviceType";
+import { useAuthContext } from "../../context/authContext/AuthContext";
 
 export const InventoryManagementLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const deviceType = useDeviceType();
+  const { userAuth } = useAuthContext();
+
+  if (!userAuth) {
+    return <Navigate to="/auth/login" />;
+  }
 
   return (
     <Container className={sidebarOpen ? "active" : ""}>

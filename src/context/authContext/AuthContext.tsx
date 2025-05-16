@@ -4,7 +4,7 @@ import type { User } from "@supabase/supabase-js";
 
 /* aquí es donde se coloca qué es lo que quiero distribuir en el value del Provider, aquí deberían estar todos los métodos, estados, etc... */
 interface AuthContextProps {
-  userAuth: User | null;
+  userAuth: Partial<User> | null;
   loadingAuth: boolean;
   errorAuth: string | null;
 }
