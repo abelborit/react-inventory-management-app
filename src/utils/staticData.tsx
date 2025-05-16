@@ -16,6 +16,8 @@ import {
   UserTypeInterface,
 } from "./staticDataInterface";
 
+const PREFIX_DASHBOARD = "/dashboard/";
+
 // User Dropdown Options
 export const UserDropdownOptions: UserDropdownOptionInterface[] = [
   {
@@ -40,17 +42,17 @@ export const SidebarLinks: SidebarLinkInterface[] = [
   {
     label: "Home",
     icon: <AiOutlineHome />,
-    to: "/home",
+    to: PREFIX_DASHBOARD + "home",
   },
   {
     label: "Kardex",
     icon: <MdOutlineCategory />,
-    to: "/kardex",
+    to: PREFIX_DASHBOARD + "kardex",
   },
   {
     label: "Reportes",
     icon: <TbReportAnalytics />,
-    to: "/reportes",
+    to: PREFIX_DASHBOARD + "reportes",
   },
 ];
 
@@ -58,7 +60,7 @@ export const SecondarySidebarLinks: SidebarLinkInterface[] = [
   {
     label: "Configuración",
     icon: <AiOutlineSetting />,
-    to: "/configurar",
+    to: PREFIX_DASHBOARD + "configurar",
   },
 ];
 
@@ -80,31 +82,31 @@ export const ConfigModules: ConfigModuleInterface[] = [
     title: "Productos",
     subtitle: "Registra tus productos",
     icon: "https://i.ibb.co/85zJ6yG/caja-del-paquete.png",
-    path: "/configurar/productos",
+    path: PREFIX_DASHBOARD + "configurar/productos",
   },
   {
     title: "Personal",
     subtitle: "Ten el control de tu personal",
     icon: "https://i.ibb.co/5vgZ0fX/hombre.png",
-    path: "/configurar/usuarios",
+    path: PREFIX_DASHBOARD + "configurar/usuarios",
   },
   {
     title: "Tu empresa",
     subtitle: "Configura tus opciones básicas",
     icon: "https://i.ibb.co/x7mHPgm/administracion-de-empresas.png",
-    path: "/configurar/empresa",
+    path: PREFIX_DASHBOARD + "configurar/empresa",
   },
   {
     title: "Categoria de productos",
     subtitle: "Asigna categorias a tus productos",
     icon: "https://i.ibb.co/VYbMRLZ/categoria.png",
-    path: "/configurar/categorias",
+    path: PREFIX_DASHBOARD + "configurar/categorias",
   },
   {
     title: "Marca de productos",
     subtitle: "Gestiona tus marcas",
     icon: "https://i.ibb.co/1qsbCRb/piensa-fuera-de-la-caja.png",
-    path: "/configurar/marca",
+    path: PREFIX_DASHBOARD + "configurar/marca",
   },
 ];
 

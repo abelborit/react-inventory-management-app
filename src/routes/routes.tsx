@@ -7,12 +7,19 @@ import { LoaderComponent } from "../components/molecules";
 
 // export const router = createBrowserRouter([
 export const router = createHashRouter([
+  /* -- ROUTES: Raiz del proyecto -- */
   {
     path: "/",
+    element: <Navigate to="/dashboard" replace />,
+  },
+
+  /* -- ROUTES: Inventory Management -- */
+  {
+    path: "/dashboard",
     // element: <Outlet />,
     async lazy() {
       const { InventoryManagementLayout } = await import(
-        "../layouts/InventoryManagementLayout"
+        "../layouts/InventoryManagementLayout/index.tsx"
       );
       return { Component: InventoryManagementLayout };
     },
@@ -36,7 +43,7 @@ export const router = createHashRouter([
 
     children: [
       /* Usar un index route en true que haga Navigate para que así React Router puede resolver la redirección antes de renderizar ya que si se creara un componente que haga una validación según la ruta y luego coloque el Navigate hacia el /home y retorne un Oulet, React Router no "detecta" inmediatamente que debe hacer un Navigate, porque aún está esperando que el router resuelva internamente la estructura de la ruta. El Navigate dentro de un componente personalizado requiere que primero React Router monte ese árbol de componentes, y recién ahí ejecute el Navigate. Eso genera un frame en blanco donde parece que "no pasa nada" hasta que React haga un re-render. Eso es un comportamiento esperado (aunque molesto) */
-      { index: true, element: <Navigate to="/home" replace /> },
+      { index: true, element: <Navigate to="home" replace /> },
 
       {
         path: "home",
@@ -49,7 +56,31 @@ export const router = createHashRouter([
     ],
   },
 
-  /* ROUTES - 404 */
+  /* -- ROUTES: Auth -- */
+  {
+    path: "/auth",
+    // element: <Outlet />,
+    async lazy() {
+      const { AuthLayout } = await import("../layouts/AuthLayout/index.tsx");
+      return { Component: AuthLayout };
+    },
+    HydrateFallback: LoaderComponent,
+
+    children: [
+      { index: true, element: <Navigate to="login" replace /> },
+
+      {
+        path: "login",
+        HydrateFallback: LoaderComponent,
+        async lazy() {
+          const { LoginPage } = await import("../pages/LoginPage/index.tsx");
+          return { Component: LoginPage };
+        },
+      },
+    ],
+  },
+
+  /* -- ROUTES: 404 Not Found -- */
   /* Ruta wildcard para rutas que no matcheen con ningun padre */
   {
     path: "*",
@@ -59,7 +90,7 @@ export const router = createHashRouter([
       );
       return { Component: InventoryManagementLayout };
     },
-    HydrateFallback: LoaderComponent, // es como un "LoaderFallback" el cual puede ser diferente por cada ruta
+    HydrateFallback: LoaderComponent,
     children: [
       {
         path: "*",
