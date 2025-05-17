@@ -100,7 +100,9 @@ export const useUserStore = create<UserStore>((set) => ({
 
       if (user) {
         set((state) => ({
-          users: state.users.map((u) => (u.id === id ? user : u)),
+          users: state.users.map((userElement) =>
+            userElement.id === id ? user : userElement
+          ),
         }));
       }
 
@@ -127,7 +129,7 @@ export const useUserStore = create<UserStore>((set) => ({
 
       if (ok) {
         set((state) => ({
-          users: state.users.filter((u) => u.id !== id),
+          users: state.users.filter((user) => user.id !== id),
         }));
       }
 

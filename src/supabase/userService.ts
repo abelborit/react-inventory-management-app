@@ -4,13 +4,13 @@ import { UserInsertProps, UserRecord } from "../interface/user.interface";
 
 const TABLE = import.meta.env.VITE_APP_USERS_TABLE;
 
-function handleError<T>(context: string, error: Error, fallback: T): T {
-  console.error(`${context} error:`, error.message);
+function handleError<T>(customTextError: string, error: Error, fallback: T): T {
+  console.error(`${customTextError} error:`, error.message);
 
   Swal.fire({
     icon: "error",
     title: "Oops...",
-    text: `${context} falló: ${error.message}`,
+    text: `${customTextError} falló: ${error.message}`,
   });
 
   return fallback;
