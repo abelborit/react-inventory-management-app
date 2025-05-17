@@ -3,15 +3,20 @@ import { MenuHamburguer, Sidebar } from "../../components/organisms";
 import { useState } from "react";
 import { Container } from "./index.styles";
 import { useDeviceType } from "../../hooks/useDeviceType";
-import { useAuthContext } from "../../context/authContext/AuthContext";
+import { useAuthStore } from "../../store/useAuthStore";
+import { LoaderComponent } from "../../components/molecules";
 
 export const InventoryManagementLayout = () => {
+  const { user, loading } = useAuthStore();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const deviceType = useDeviceType();
-  const { userAuth } = useAuthContext();
 
-  if (!userAuth) {
-    return <Navigate to="/auth/login" />;
+  if (loading) {
+    return <LoaderComponent />;
+  }
+
+  if (!user) {
+    return <Navigate to="/auth/login" replace />;
   }
 
   return (

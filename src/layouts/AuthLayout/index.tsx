@@ -1,18 +1,21 @@
 import { Navigate, Outlet } from "react-router";
 import { Container } from "./index.styles";
-import { useAuthContext } from "../../context/authContext/AuthContext";
+import { useAuthStore } from "../../store/useAuthStore";
+import { LoaderComponent } from "../../components/molecules";
 
 export const AuthLayout = () => {
-  const { userAuth } = useAuthContext();
+  const { user, loading } = useAuthStore();
 
-  if (userAuth) {
-    return <Navigate to="/dashboard/home" />;
+  if (loading) {
+    return <LoaderComponent />;
+  }
+
+  if (user) {
+    return <Navigate to="/dashboard/home" replace />;
   }
 
   return (
     <Container>
-      <h1>AuthLayout</h1>
-
       <section>
         <Outlet />
       </section>
