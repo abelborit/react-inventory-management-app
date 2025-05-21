@@ -2,11 +2,10 @@ import { ReactNode } from "react";
 import { IconComponent } from "../../atoms";
 import { Container } from "./index.styles";
 
-interface ButtonSaveProps {
+interface ButtonBaseProps {
   title: string;
   bgcolor: string;
   icon: string | ReactNode;
-  url: string;
   sidebarOpen: boolean;
   handleClick: () => void;
 }
@@ -15,19 +14,14 @@ export const ButtonBase = ({
   title,
   bgcolor,
   icon,
-  url,
   sidebarOpen,
   handleClick,
-}: ButtonSaveProps) => {
+}: ButtonBaseProps) => {
   return (
     <Container
-      as="a"
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
+      type="button"
       $bgcolor={bgcolor}
       onClick={handleClick}
-      role="button"
       aria-label={title}
       $sidebarOpen={sidebarOpen}
     >

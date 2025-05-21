@@ -34,7 +34,6 @@ export const SidebarCard = ({
             // icon=""
             icon="🔒"
             bgcolor="#f8f2fd"
-            url=""
             sidebarOpen={sidebarOpen}
             handleClick={handleLogout}
           />
@@ -50,7 +49,6 @@ export const SidebarCard = ({
           // icon=""
           icon="🔒"
           bgcolor="#f8f2fd"
-          url=""
           sidebarOpen={sidebarOpen}
           handleClick={handleLogout}
         />

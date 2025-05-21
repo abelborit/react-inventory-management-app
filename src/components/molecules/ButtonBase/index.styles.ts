@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const Container = styled.a<{ $bgcolor: string; $sidebarOpen: boolean }>`
+export const Container = styled.button<{
+  $bgcolor: string;
+  $sidebarOpen: boolean;
+}>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
