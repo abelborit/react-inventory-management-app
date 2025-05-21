@@ -1,4 +1,4 @@
-import { ButtonSave } from "../ButtonSave";
+import { ButtonBase } from "../ButtonBase";
 import { Container } from "./index.styles";
 import { BsQuestionCircle } from "react-icons/bs";
 
@@ -28,7 +28,7 @@ export const SidebarCard = ({
         <h3>Cerrar sesión</h3>
 
         <div className="contentBtn">
-          <ButtonSave
+          <ButtonBase
             // title="Cerrar sesión"
             title=""
             // icon=""
@@ -44,7 +44,7 @@ export const SidebarCard = ({
   ) : (
     <Container $sidebarOpen={sidebarOpen}>
       <div className="contentBtn">
-        <ButtonSave
+        <ButtonBase
           // title="Cerrar sesión"
           title=""
           // icon=""

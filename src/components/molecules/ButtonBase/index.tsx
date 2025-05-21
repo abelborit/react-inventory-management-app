@@ -11,7 +11,7 @@ interface ButtonSaveProps {
   handleClick: () => void;
 }
 
-export const ButtonSave = ({
+export const ButtonBase = ({
   title,
   bgcolor,
   icon,
