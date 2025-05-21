@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { supabase } from "../supabase/supabase.config";
 import type { User } from "@supabase/supabase-js";
+import Swal from "sweetalert2";
 
 interface AuthStore {
   user: User | null;
@@ -9,6 +10,18 @@ interface AuthStore {
   initSupabaseSession: () => void;
   signInWithEmail: (email: string, password: string) => Promise<User | null>;
   signOut: () => Promise<void>;
+}
+
+function handleError<T>(customTextError: string, error: Error, fallback: T): T {
+  console.error(`${customTextError} error:`, error.message);
+
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: `${customTextError} falló: ${error.message}`,
+  });
+
+  return fallback;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -46,6 +59,8 @@ export const useAuthStore = create<AuthStore>((set) => ({
             loading: false,
             error: "Authentication error. Please try again later.",
           });
+
+          handleError("Initialice app error", error, null);
         }
 
         // set({
@@ -79,6 +94,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
       set({ error: error.message ?? "Login failed", loading: false });
 
+      handleError("Login failed", error, null);
       return null;
     }
   },
@@ -97,6 +113,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
       set({ error: error.message ?? "Logout failed", loading: false });
 
+      handleError("Logout failed", error, null);
       throw error;
     }
   },
