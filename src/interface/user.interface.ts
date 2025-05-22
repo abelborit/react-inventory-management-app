@@ -29,6 +29,7 @@ export interface UserInsertProps {
   name: string;
   lastname: string;
   email: string;
+  password: string;
   document_type: DocumentType;
   document_number: string;
   phone: string;
