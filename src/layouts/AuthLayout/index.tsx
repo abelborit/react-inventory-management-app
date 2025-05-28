@@ -2,15 +2,25 @@ import { Navigate, Outlet } from "react-router";
 import { Container } from "./index.styles";
 import { useAuthStore } from "../../store/useAuthStore";
 import { LoaderComponent } from "../../components/molecules";
+import { useSupabaseErrorHandler } from "../../hooks/useSupabaseErrorHandler";
 
 export const AuthLayout = () => {
-  const { user, loading } = useAuthStore();
+  const {
+    user: userAuthStore,
+    loading: loadingAuthStore,
+    error: errorAuthStore,
+  } = useAuthStore();
+  const { supabaseErrorHandler } = useSupabaseErrorHandler();
 
-  if (loading) {
+  if (loadingAuthStore) {
     return <LoaderComponent />;
   }
 
-  if (user) {
+  if (errorAuthStore) {
+    supabaseErrorHandler("[useAuthStore]", errorAuthStore, null);
+  }
+
+  if (userAuthStore) {
     return <Navigate to="/dashboard/home" replace />;
   }
 

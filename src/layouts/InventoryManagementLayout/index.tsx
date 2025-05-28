@@ -1,21 +1,32 @@
-import { Navigate, Outlet } from "react-router";
+import { Navigate /* , Outlet */ } from "react-router";
 import { MenuHamburguer, Sidebar } from "../../components/organisms";
 import { useState } from "react";
 import { Container } from "./index.styles";
 import { useDeviceType } from "../../hooks/useDeviceType";
 import { useAuthStore } from "../../store/useAuthStore";
 import { LoaderComponent } from "../../components/molecules";
+import { useSupabaseErrorHandler } from "../../hooks/useSupabaseErrorHandler";
 
 export const InventoryManagementLayout = () => {
-  const { user, loading } = useAuthStore();
+  const {
+    user: userAuthStore,
+    loading: loadingAuthStore,
+    error: errorAuthStore,
+  } = useAuthStore();
+  const { supabaseErrorHandler } = useSupabaseErrorHandler();
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const deviceType = useDeviceType();
 
-  if (loading) {
+  if (loadingAuthStore) {
     return <LoaderComponent />;
   }
 
-  if (!user) {
+  if (errorAuthStore) {
+    supabaseErrorHandler("[useAuthStore]", errorAuthStore, null);
+  }
+
+  if (!userAuthStore) {
     return <Navigate to="/auth/login" replace />;
   }
 
@@ -37,7 +48,8 @@ export const InventoryManagementLayout = () => {
       ) : null}
 
       <section className="contentRoutes">
-        <Outlet />
+        {/* <Outlet /> */}
+        <pre>{JSON.stringify(userAuthStore, null, 3)}</pre>
       </section>
     </Container>
   );
