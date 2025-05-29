@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{
+  $isDark: boolean;
+}>`
   .toggle {
     width: 46px;
     height: 46px;
@@ -12,6 +14,7 @@ export const Container = styled.div`
     line-height: 1;
     margin-left: 7px;
     margin-top: 15px;
+    background-color: ${({ $isDark }) => ($isDark ? "#333" : "#fff")};
   }
 
   .input {
@@ -26,6 +29,7 @@ export const Container = styled.div`
 
   .icon--moon {
     transition-delay: 200ms;
+    text-align: center;
   }
 
   .icon--sun {
@@ -38,6 +42,7 @@ export const Container = styled.div`
 
   #switch:checked ~ .icon--sun {
     transition-delay: 200ms;
+    text-align: center;
     transform: scale(1) rotate(360deg);
   }
 
