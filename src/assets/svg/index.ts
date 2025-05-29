@@ -8,9 +8,9 @@ import LogOut from "./log-out.svg?react";
 import Moon from "./moon.svg?react";
 import ScrollText from "./scroll-text.svg?react";
 import Sun from "./sun.svg?react";
-import Crown from "./crown.svg";
-import UserRound from "./user-round.svg";
-import ShieldCheck from "./shield-check.svg";
+import Crown from "./crown.svg?react";
+import UserRound from "./user-round.svg?react";
+import ShieldCheck from "./shield-check.svg?react";
 
 export {
   ChartLine,
