@@ -6,6 +6,7 @@ import { useDeviceType } from "../../hooks/useDeviceType";
 import { useAuthStore } from "../../store/useAuthStore";
 import { LoaderComponent } from "../../components/molecules";
 import { useSupabaseErrorHandler } from "../../hooks/useSupabaseErrorHandler";
+import { useUserStore } from "../../store/useUserStore";
 
 export const InventoryManagementLayout = () => {
   const {
@@ -13,17 +14,30 @@ export const InventoryManagementLayout = () => {
     loading: loadingAuthStore,
     error: errorAuthStore,
   } = useAuthStore();
+  const { error: errorUserStore, loading: loadingUserStore } = useUserStore();
   const { supabaseErrorHandler } = useSupabaseErrorHandler();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const deviceType = useDeviceType();
 
-  if (loadingAuthStore) {
+  if (loadingAuthStore || loadingUserStore) {
     return <LoaderComponent />;
   }
 
+  if (errorUserStore) {
+    supabaseErrorHandler(
+      "[InventoryManagementLayout - useUserStore]",
+      errorUserStore,
+      null
+    );
+  }
+
   if (errorAuthStore) {
-    supabaseErrorHandler("[useAuthStore]", errorAuthStore, null);
+    supabaseErrorHandler(
+      "[InventoryManagementLayout - useAuthStore]",
+      errorAuthStore,
+      null
+    );
   }
 
   if (!userAuthStore) {

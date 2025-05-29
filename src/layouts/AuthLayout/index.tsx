@@ -3,21 +3,19 @@ import { Container } from "./index.styles";
 import { useAuthStore } from "../../store/useAuthStore";
 import { LoaderComponent } from "../../components/molecules";
 import { useSupabaseErrorHandler } from "../../hooks/useSupabaseErrorHandler";
+import { useUserStore } from "../../store/useUserStore";
 
 export const AuthLayout = () => {
-  const {
-    user: userAuthStore,
-    loading: loadingAuthStore,
-    error: errorAuthStore,
-  } = useAuthStore();
+  const { user: userAuthStore, loading: loadingAuthStore } = useAuthStore();
+  const { error: errorUserStore, loading: loadingUserStore } = useUserStore();
   const { supabaseErrorHandler } = useSupabaseErrorHandler();
 
-  if (loadingAuthStore) {
+  if (loadingAuthStore || loadingUserStore) {
     return <LoaderComponent />;
   }
 
-  if (errorAuthStore) {
-    supabaseErrorHandler("[useAuthStore]", errorAuthStore, null);
+  if (errorUserStore) {
+    supabaseErrorHandler("[AuthLayout - useUserStore]", errorUserStore, null);
   }
 
   if (userAuthStore) {
