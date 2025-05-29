@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import terser from "@rollup/plugin-terser";
+import svgr from "vite-plugin-svgr";
 import { requiredEnvVars } from "./src/toolbox/requiredEnvVars";
 import {
   AllowedModeType,
@@ -46,7 +47,7 @@ export default defineConfig(({ mode }) => {
     const isSecureMode = allowedSecureModes.includes(mode);
 
     return {
-      plugins: [react()],
+      plugins: [react(), svgr()],
       define: {
         "import.meta.env": {
           ...env,
