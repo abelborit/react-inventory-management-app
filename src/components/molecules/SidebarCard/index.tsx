@@ -1,3 +1,5 @@
+import { LogOut } from "../../../assets/svg";
+import { SvgIconComponent } from "../../atoms";
 import { ButtonBase } from "../ButtonBase";
 import { Container } from "./index.styles";
 import { BsQuestionCircle } from "react-icons/bs";
@@ -32,7 +34,8 @@ export const SidebarCard = ({
             // title="Cerrar sesión"
             title=""
             // icon=""
-            icon="🔒"
+            // icon="🔒"
+            icon={<SvgIconComponent icon={LogOut} />}
             bgcolor="#f8f2fd"
             sidebarOpen={sidebarOpen}
             handleClick={handleLogout}
@@ -47,7 +50,8 @@ export const SidebarCard = ({
           // title="Cerrar sesión"
           title=""
           // icon=""
-          icon="🔒"
+          // icon="🔒"
+          icon={<SvgIconComponent icon={LogOut} />}
           bgcolor="#f8f2fd"
           sidebarOpen={sidebarOpen}
           handleClick={handleLogout}
