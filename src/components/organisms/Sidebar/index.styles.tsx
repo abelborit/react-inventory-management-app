@@ -86,7 +86,9 @@ export const SidebarContainer = styled.div<{ $isopen: boolean }>`
     z-index: 2;
     transform: ${({ $isopen }) =>
       $isopen ? `translateX(162px) rotate(3.142rad)` : `initial`};
-    color: ${(props) => props.theme.text};
+    svg {
+      stroke: ${(props) => props.theme.text};
+    }
   }
 `;
 

@@ -1,9 +1,9 @@
 import { variables } from "../../../styles/variables";
 import { SecondarySidebarLinks, SidebarLinks } from "../../../utils/staticData";
-import { ToggleTheme } from "../../molecules";
-import { SidebarCard, SidebarLinkItem } from "../../molecules";
+import { SvgIconComponent } from "../../atoms";
+import { SidebarCard, SidebarLinkItem, ToggleTheme } from "../../molecules";
 import { Container, Divider, SidebarContainer } from "./index.styles";
-import { IoIosArrowForward } from "react-icons/io";
+import { ChevronRight } from "../../../assets/svg";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -22,7 +22,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         className="Sidebarbutton"
         onClick={handleToggleSidebar}
       >
-        <IoIosArrowForward />
+        <SvgIconComponent icon={ChevronRight} />
       </button>
 
       <Container $isopen={sidebarOpen} className={sidebarOpen ? "active" : ""}>
