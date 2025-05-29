@@ -10,13 +10,14 @@ export interface UserDropdownOptionInterface {
 // Sidebar link item
 export interface SidebarLinkInterface {
   label: string;
-  icon: ReactNode;
+  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   to: string;
 }
 
 // Theme option (light/dark)
 export interface ThemeOptionInterface {
-  icon: string;
+  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  // icon: string;
   description: string;
 }
 
@@ -24,18 +25,18 @@ export interface ThemeOptionInterface {
 export interface ConfigModuleInterface {
   title: string;
   subtitle: string;
-  icon: string;
+  illustration: string;
   path: string;
 }
 
 // User type option
 export interface UserTypeInterface {
   description: string;
-  icon: string;
+  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 }
 
 // Document type option
 export interface DocumentTypeInterface {
   description: string;
-  icon: string;
+  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
 }
