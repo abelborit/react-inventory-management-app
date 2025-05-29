@@ -20,7 +20,7 @@ export const LinkContainer = styled.div`
       padding: ${() => variables.smSpacing} ${() => variables.mdSpacing};
       display: flex;
       svg {
-        font-size: 25px;
+        stroke: ${({ theme }) => theme.text};
       }
     }
     .labelVisible {
@@ -31,7 +31,9 @@ export const LinkContainer = styled.div`
       opacity: 0;
     }
     &.active {
-      color: ${(props) => props.theme.bg5};
+      svg {
+        stroke: ${(props) => props.theme.bg5};
+      }
       font-weight: 600;
       &::before {
         content: "";

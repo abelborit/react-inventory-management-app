@@ -1,10 +1,10 @@
 import { NavLink } from "react-router";
-import { ReactNode } from "react";
 import { LinkContainer } from "./index.styles";
+import { SvgIconComponent } from "../../atoms";
 
 interface SidebarLinkItemProps {
   label: string;
-  icon: ReactNode;
+  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   to: string;
   sidebarOpen?: boolean;
   isMobile?: boolean;
@@ -13,7 +13,7 @@ interface SidebarLinkItemProps {
 
 export const SidebarLinkItem = ({
   label,
-  icon,
+  icon: Icon,
   to,
   sidebarOpen = false,
   isMobile = false,
@@ -28,7 +28,7 @@ export const SidebarLinkItem = ({
       to={to}
       className={({ isActive }) => `Links ${isActive ? "active" : ""}`}
     >
-      <span className="Linkicon">{icon}</span>
+      <SvgIconComponent className="Linkicon" icon={Icon} />
 
       <span
         className={
