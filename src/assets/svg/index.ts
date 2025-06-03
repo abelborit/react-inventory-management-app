@@ -11,6 +11,7 @@ import Sun from "./sun.svg?react";
 import Crown from "./crown.svg?react";
 import UserRound from "./user-round.svg?react";
 import ShieldCheck from "./shield-check.svg?react";
+import CircleHelp from "./circle-help.svg?react";
 
 export {
   ChartLine,
@@ -25,4 +26,5 @@ export {
   Crown,
   UserRound,
   ShieldCheck,
+  CircleHelp,
 };

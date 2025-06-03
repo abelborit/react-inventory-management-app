@@ -1,8 +1,7 @@
-import { LogOut } from "../../../assets/svg";
+import { CircleHelp, LogOut } from "../../../assets/svg";
 import { SvgIconComponent } from "../../atoms";
 import { ButtonBase } from "../ButtonBase";
 import { Container } from "./index.styles";
-import { BsQuestionCircle } from "react-icons/bs";
 
 interface SidebarCardProps {
   sidebarOpen: boolean;
@@ -19,9 +18,9 @@ export const SidebarCard = ({
 
   return sidebarOpen ? (
     <Container $sidebarOpen={sidebarOpen} $isMobile={isMobile}>
-      <span className="icon" aria-hidden="true">
-        <BsQuestionCircle />
-      </span>
+      <div className="icon" aria-hidden="true">
+        <SvgIconComponent icon={CircleHelp} color={"#f8f2fd"} size="60px" />
+      </div>
 
       <div className="cardContent">
         <div className="circle1" aria-hidden="true" />
