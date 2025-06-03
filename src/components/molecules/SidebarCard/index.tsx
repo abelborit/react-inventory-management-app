@@ -32,9 +32,7 @@ export const SidebarCard = ({
           <ButtonBase
             // title="Cerrar sesión"
             title=""
-            // icon=""
-            // icon="🔒"
-            icon={<SvgIconComponent icon={LogOut} />}
+            icon={LogOut}
             bgcolor="#f8f2fd"
             sidebarOpen={sidebarOpen}
             handleClick={handleLogout}
@@ -48,9 +46,7 @@ export const SidebarCard = ({
         <ButtonBase
           // title="Cerrar sesión"
           title=""
-          // icon=""
-          // icon="🔒"
-          icon={<SvgIconComponent icon={LogOut} />}
+          icon={LogOut}
           bgcolor="#f8f2fd"
           sidebarOpen={sidebarOpen}
           handleClick={handleLogout}

@@ -1,11 +1,10 @@
-import { ReactNode } from "react";
-import { IconComponent } from "../../atoms";
+import { SvgIconComponent } from "../../atoms";
 import { Container } from "./index.styles";
 
 interface ButtonBaseProps {
   title: string;
   bgcolor: string;
-  icon: string | ReactNode;
+  icon: null | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   sidebarOpen: boolean;
   handleClick: () => void;
 }
@@ -25,11 +24,7 @@ export const ButtonBase = ({
       aria-label={title}
       $sidebarOpen={sidebarOpen}
     >
-      {icon ? (
-        <IconComponent title={title} ariaHidden={false}>
-          {icon}
-        </IconComponent>
-      ) : null}
+      {icon ? <SvgIconComponent icon={icon} /> : null}
 
       {title ? <span>{title}</span> : null}
     </Container>

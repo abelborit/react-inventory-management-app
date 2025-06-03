@@ -102,7 +102,7 @@ export const LoginPageTemplate = () => {
 
       <ButtonBase
         title="Crear Cuenta Admin"
-        icon=""
+        icon={null}
         bgcolor="#f8f2fd"
         sidebarOpen={false}
         handleClick={handleCreateAccountAdmin}
@@ -110,7 +110,7 @@ export const LoginPageTemplate = () => {
 
       <ButtonBase
         title="Crear Cuenta Employee"
-        icon=""
+        icon={null}
         bgcolor="#f8f2fd"
         sidebarOpen={false}
         handleClick={handleCreateAccountEmployee}
