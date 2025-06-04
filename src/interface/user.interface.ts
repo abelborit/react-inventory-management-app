@@ -30,11 +30,11 @@ export interface UserInsertProps {
   lastname: string;
   email: string;
   password: string;
-  document_type: DocumentType;
+  document_type: DocumentType | string;
   document_number: string;
   phone: string;
   adress: string;
-  user_type: UserType;
+  user_type: UserType | string;
   id_auth?: string;
 }
 
