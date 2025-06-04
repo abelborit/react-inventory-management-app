@@ -6,7 +6,7 @@ import { ButtonBase } from "../../molecules";
 import { Container } from "./index.styles";
 
 export const LoginPageTemplate = () => {
-  const { createUser } = useUserStore();
+  const createUser = useUserStore((state) => state.createUser);
 
   const navigate = useNavigate();
 

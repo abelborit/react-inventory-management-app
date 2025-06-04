@@ -6,8 +6,10 @@ import { useSupabaseErrorHandler } from "../../hooks/useSupabaseErrorHandler";
 import { useUserStore } from "../../store/useUserStore";
 
 export const AuthLayout = () => {
-  const { user: userAuthStore, loading: loadingAuthStore } = useAuthStore();
-  const { error: errorUserStore, loading: loadingUserStore } = useUserStore();
+  const userAuthStore = useAuthStore((state) => state.user);
+  const loadingAuthStore = useAuthStore((state) => state.loading);
+  const errorUserStore = useUserStore((state) => state.error);
+  const loadingUserStore = useUserStore((state) => state.loading);
   const { supabaseErrorHandler } = useSupabaseErrorHandler();
 
   if (loadingAuthStore || loadingUserStore) {

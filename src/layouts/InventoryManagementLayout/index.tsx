@@ -9,12 +9,10 @@ import { useSupabaseErrorHandler } from "../../hooks/useSupabaseErrorHandler";
 import { useUserStore } from "../../store/useUserStore";
 
 export const InventoryManagementLayout = () => {
-  const {
-    user: userAuthStore,
-    loading: loadingAuthStore,
-    // error: errorAuthStore,
-  } = useAuthStore();
-  const { error: errorUserStore, loading: loadingUserStore } = useUserStore();
+  const userAuthStore = useAuthStore((state) => state.user);
+  const loadingAuthStore = useAuthStore((state) => state.loading);
+  const errorUserStore = useUserStore((state) => state.error);
+  const loadingUserStore = useUserStore((state) => state.loading);
   const { supabaseErrorHandler } = useSupabaseErrorHandler();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,14 +29,6 @@ export const InventoryManagementLayout = () => {
       null
     );
   }
-
-  // if (errorAuthStore) {
-  //   supabaseErrorHandler(
-  //     "[InventoryManagementLayout - useAuthStore]",
-  //     errorAuthStore,
-  //     null
-  //   );
-  // }
 
   if (!userAuthStore) {
     return <Navigate to="/auth/login" replace />;

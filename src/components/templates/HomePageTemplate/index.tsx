@@ -4,7 +4,7 @@ import { Container } from "./index.styles";
 
 export const HomePageTemplate = () => {
   const { toggleTheme, currentTheme } = useThemeContext();
-  const { user: userAuthStore } = useAuthStore();
+  const userAuthStore = useAuthStore((state) => state.user);
 
   return (
     <Container>
