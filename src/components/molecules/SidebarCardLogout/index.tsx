@@ -3,15 +3,15 @@ import { SvgIconComponent } from "../../atoms";
 import { ButtonBase } from "../ButtonBase";
 import { Container } from "./index.styles";
 
-interface SidebarCardProps {
+interface SidebarCardLogoutProps {
   sidebarOpen: boolean;
   isMobile?: boolean;
 }
 
-export const SidebarCard = ({
+export const SidebarCardLogout = ({
   sidebarOpen,
   isMobile = false,
-}: SidebarCardProps) => {
+}: SidebarCardLogoutProps) => {
   const handleLogout = () => {
     console.log("Sesión cerrada");
   };

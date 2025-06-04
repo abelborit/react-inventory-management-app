@@ -1,7 +1,7 @@
 import { variables } from "../../../styles/variables";
 import { SecondarySidebarLinks, SidebarLinks } from "../../../utils/staticData";
 import { SvgIconComponent } from "../../atoms";
-import { SidebarCard, SidebarLinkItem, ToggleTheme } from "../../molecules";
+import { SidebarCardLogout, SidebarLinkItem, ToggleTheme } from "../../molecules";
 import { Container, Divider, SidebarContainer } from "./index.styles";
 import { ChevronRight } from "../../../assets/svg";
 
@@ -60,7 +60,7 @@ export const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
         <Divider />
 
-        <SidebarCard sidebarOpen={sidebarOpen} />
+        <SidebarCardLogout sidebarOpen={sidebarOpen} />
       </Container>
     </SidebarContainer>
   );

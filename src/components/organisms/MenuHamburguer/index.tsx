@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { SidebarLinks, SecondarySidebarLinks } from "../../../utils/staticData";
-import { SidebarLinkItem, SidebarCard, ToggleTheme } from "../../molecules";
+import { SidebarLinkItem, SidebarCardLogout, ToggleTheme } from "../../molecules";
 import { variables } from "../../../styles/variables";
 import {
   Container,
@@ -65,7 +65,7 @@ export const MenuHamburguer = () => {
 
         <Divider />
 
-        <SidebarCard sidebarOpen={true} isMobile={true} />
+        <SidebarCardLogout sidebarOpen={true} isMobile={true} />
       </SidebarMobile>
     </Container>
   );

@@ -1,5 +1,5 @@
 export { ButtonBase } from "./ButtonBase";
-export { SidebarCard } from "./SidebarCard";
+export { SidebarCardLogout } from "./SidebarCardLogout";
 export { SidebarLinkItem } from "./SidebarLinkItem";
 export { ToggleTheme } from "./ToggleTheme";
 export { LoaderComponent } from "./LoaderComponent";
