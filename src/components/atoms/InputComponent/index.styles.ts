@@ -51,18 +51,23 @@ export const LabelContainer = styled.div`
   align-self: flex-start;
   justify-content: center;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.35rem;
 `;
 
-export const Label = styled.label<{ $isError?: boolean }>`
+export const Label = styled.label<{ $isError?: boolean; $isValid?: boolean }>`
   font-size: 0.875rem;
   font-weight: 500;
-  color: ${(props) => (props.$isError ? "#e53e3e" : props.theme.text)};
+  color: ${(props) =>
+    props.$isError ? "#e53e3e" : props.$isValid ? "#38a169" : props.theme.text};
 `;
 
-export const CharCount = styled.span<{ $isError?: boolean }>`
+export const CharCount = styled.span<{
+  $isError?: boolean;
+  $isValid?: boolean;
+}>`
   font-size: 0.7rem;
-  color: ${(props) => (props.$isError ? "#e53e3e" : "#8d8d8d")};
+  color: ${(props) =>
+    props.$isError ? "#e53e3e" : props.$isValid ? "#38a169" : "#8d8d8d"};
 `;
 
 export const ErrorText = styled.span`

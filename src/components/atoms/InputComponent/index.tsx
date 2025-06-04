@@ -27,7 +27,7 @@ interface InputComponentProps {
   ) => void;
   error?: string;
   touched?: boolean;
-  isFormValid?: boolean;
+  // isFormValid?: boolean;
 
   /* y también puede recibir X cantidad de propiedades adicionales que queramos pasarle y se puede ir colocando una a una o sino también de la siguiente forma usando un comodín "[x: string]: any;" que significa que puede recibir cualquier llave que será de tipo string y su valor será cualquier cosa y con este comodín nos permite agregar cualquier cantidad de propiedades adcionales */
   // [x: string]: any;
@@ -35,6 +35,7 @@ interface InputComponentProps {
 
 export const InputComponent = ({
   // ...rest
+  // isFormValid,
   icon,
   label,
   name,
@@ -47,7 +48,6 @@ export const InputComponent = ({
   setFieldTouched,
   error,
   touched,
-  isFormValid,
 }: InputComponentProps) => {
   const handleChangeManual = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event);
@@ -55,21 +55,25 @@ export const InputComponent = ({
   };
 
   const isError = touched && !!error;
-  const isValid = isFormValid && !isError;
+  const isValid = touched && !error;
 
   return (
     <Container>
       <LabelContainer>
         {icon ? (
-          <SvgIconComponent icon={icon} color={isError ? "#e53e3e" : "#666"} />
+          <SvgIconComponent
+            icon={icon}
+            size="14px"
+            color={isError ? "#e53e3e" : isValid ? "#38a169" : "#8d8d8d"}
+          />
         ) : null}
 
-        <Label htmlFor={name} $isError={isError}>
+        <Label htmlFor={name} $isError={isError} $isValid={isValid}>
           {label}
         </Label>
 
         {showCharactersLength ? (
-          <CharCount $isError={isError}>
+          <CharCount $isError={isError} $isValid={isValid}>
             ({value?.length || 0} Characters)
           </CharCount>
         ) : null}
