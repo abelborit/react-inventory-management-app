@@ -10,7 +10,7 @@ function App() {
   /* Importante: Llamar a useAuthStore.getState().initSupabaseSession() una vez en el arranque de la app (p.ej. en App.tsx) para que empiece a escuchar la sesión de Supabase */
   const initAuth = useAuthStore((state) => state.initSupabaseSession);
   const authStore = useAuthStore((state) => state);
-  console.log(authStore);
+  console.log("authStore", authStore);
 
   useEffect(() => {
     /* aquí también se tiene una función de des-susbcripción, entonces por eso se coloca en el return de useEffect, ya que el useEffect la función de retorno que tiene es para ser una función de limpieza */

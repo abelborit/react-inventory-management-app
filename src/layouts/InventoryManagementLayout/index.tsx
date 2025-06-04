@@ -1,4 +1,4 @@
-import { Navigate /* , Outlet */ } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import { MenuHamburguer, Sidebar } from "../../components/organisms";
 import { useState } from "react";
 import { Container } from "./index.styles";
@@ -12,7 +12,7 @@ export const InventoryManagementLayout = () => {
   const {
     user: userAuthStore,
     loading: loadingAuthStore,
-    error: errorAuthStore,
+    // error: errorAuthStore,
   } = useAuthStore();
   const { error: errorUserStore, loading: loadingUserStore } = useUserStore();
   const { supabaseErrorHandler } = useSupabaseErrorHandler();
@@ -32,13 +32,13 @@ export const InventoryManagementLayout = () => {
     );
   }
 
-  if (errorAuthStore) {
-    supabaseErrorHandler(
-      "[InventoryManagementLayout - useAuthStore]",
-      errorAuthStore,
-      null
-    );
-  }
+  // if (errorAuthStore) {
+  //   supabaseErrorHandler(
+  //     "[InventoryManagementLayout - useAuthStore]",
+  //     errorAuthStore,
+  //     null
+  //   );
+  // }
 
   if (!userAuthStore) {
     return <Navigate to="/auth/login" replace />;
@@ -62,8 +62,7 @@ export const InventoryManagementLayout = () => {
       ) : null}
 
       <section className="contentRoutes">
-        {/* <Outlet /> */}
-        <pre>{JSON.stringify(userAuthStore, null, 3)}</pre>
+        <Outlet />
       </section>
     </Container>
   );
