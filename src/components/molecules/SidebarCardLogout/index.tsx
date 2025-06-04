@@ -1,4 +1,5 @@
 import { CircleHelp, LogOut } from "../../../assets/svg";
+import { useAuthStore } from "../../../store/useAuthStore";
 import { SvgIconComponent } from "../../atoms";
 import { ButtonBase } from "../ButtonBase";
 import { Container } from "./index.styles";
@@ -12,8 +13,11 @@ export const SidebarCardLogout = ({
   sidebarOpen,
   isMobile = false,
 }: SidebarCardLogoutProps) => {
+  const signOut = useAuthStore((state) => state.signOut);
+
   const handleLogout = () => {
     console.log("Sesión cerrada");
+    signOut();
   };
 
   return sidebarOpen ? (

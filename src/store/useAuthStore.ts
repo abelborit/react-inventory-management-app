@@ -41,13 +41,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
           if (!session) {
             set({
               user: null,
-              loading: false,
               error: "There isn't any session",
             });
           } else {
             set({
               user: session?.user,
-              loading: false,
               error: null,
             });
           }
@@ -56,11 +54,12 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
           set({
             user: null,
-            loading: false,
             error: "Authentication error. Please try again later.",
           });
 
           handleError("Initialice app error", error, null);
+        } finally {
+          set({ loading: false });
         }
 
         // set({
@@ -86,16 +85,18 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
       if (error) throw error;
 
-      set({ user: data.user, loading: false });
+      set({ user: data.user });
 
       return data.user;
     } catch (error: any) {
       console.error("signIn error:", error);
 
-      set({ error: error.message ?? "Login failed", loading: false });
+      set({ error: error.message ?? "Login failed" });
 
       handleError("Login failed", error, null);
       return null;
+    } finally {
+      set({ loading: false });
     }
   },
 
@@ -107,14 +108,16 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
       if (error) throw error;
 
-      set({ user: null, loading: false });
+      set({ user: null });
     } catch (error: any) {
       console.error("signOut error:", error);
 
-      set({ error: error.message ?? "Logout failed", loading: false });
+      set({ error: error.message ?? "Logout failed" });
 
       handleError("Logout failed", error, null);
       throw error;
+    } finally {
+      set({ loading: false });
     }
   },
 }));
