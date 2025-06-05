@@ -26,7 +26,7 @@ export const ContentLogoContainer = styled.div`
   display: flex;
   align-items: center;
   font-weight: 700;
-  color: ${darkTheme.text};
+  color: ${darkTheme.body};
 
   img {
     width: 50px;
@@ -37,10 +37,15 @@ export const ContentLogoContainer = styled.div`
 export const BannerlateralContainer = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #fc6b32;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* background-color: #fc6b32; */
+  /* background: linear-gradient(220.55deg, #ffc328 0%, #fc6b32 100%); */
+  background-color: #fce038;
+  background-image: url("src/assets/background-banner.png");
+  background-attachment: fixed;
+  background-size: cover;
 
   img {
     width: 80%;

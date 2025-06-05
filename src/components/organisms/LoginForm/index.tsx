@@ -19,8 +19,12 @@ import { ButtonBase } from "../../molecules";
 import { errorGenericMessages } from "../../../constants/errorGenericMessages";
 import { useErrorGenericHandler } from "../../../hooks/useErrorGenericHandler";
 import { AtSign, Lock } from "../../../assets/svg";
+import { useThemeContext } from "../../../context/themeContext/ThemeContext";
 
 export const LoginForm = () => {
+  const { currentTheme } = useThemeContext();
+  const isDark = currentTheme === "dark";
+
   const navigate = useNavigate();
 
   const { errorGenericHandler } = useErrorGenericHandler();
@@ -79,7 +83,7 @@ export const LoginForm = () => {
 
   return (
     <Container>
-      <CardContainer>
+      <CardContainer $isDark={isDark}>
         <div className="card">
           <Title>StockPRO</Title>
           <SubTitle>Controla tu inventario</SubTitle>

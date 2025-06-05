@@ -11,11 +11,10 @@ export const Container = styled.div`
   text-align: center;
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.div<{ $isDark: boolean }>`
   width: 100%;
   height: 100%;
   grid-column: 1;
-  background-color: ${({ theme }) => theme.bgtotal};
   color: ${(props) => props.theme.text};
   z-index: 100;
   gap: 30px;
@@ -25,6 +24,14 @@ export const CardContainer = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-between;
+  /* background-color: ${({ theme }) => theme.bgtotal}; */
+  background-color: ${({ $isDark }) => ($isDark ? "#272727" : "#eaeaea")};
+  background-image: ${({ $isDark }) =>
+    $isDark
+      ? `url("src/assets/background-dark.png")`
+      : `url("src/assets/background-ligth.png")`};
+  background-attachment: fixed;
+  background-size: cover;
 
   @media ${device.tablet} {
     grid-column: 2;
