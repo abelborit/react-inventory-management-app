@@ -34,6 +34,7 @@ export const LoginContainer = styled.div`
   .bannerlateral {
     background-color: #fc6b32;
     height: 100vh;
+    display: flex;
     align-items: center;
     justify-content: center;
 
@@ -73,7 +74,13 @@ export const LoginContainer = styled.div`
     }
 
     .card {
+      margin-top: -40px;
       width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
       @media ${device.laptop} {
         width: 50%;
