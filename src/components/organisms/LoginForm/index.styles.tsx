@@ -1,90 +1,47 @@
 import styled from "styled-components";
 import { device } from "../../../styles/breakpoints";
-import { darkTheme } from "../../../styles/themes";
 
-export const LoginContainer = styled.div`
-  background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
+export const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+`;
+
+export const CardContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  grid-column: 1;
+  background-color: ${({ theme }) => theme.bgtotal};
+  color: ${(props) => props.theme.text};
+  z-index: 100;
+  gap: 30px;
+  padding: 20px;
+  box-shadow: 8px 5px 18px 3px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media ${device.tablet} {
-    grid-template-columns: 1fr 2fr;
+    grid-column: 2;
+    width: 100%;
+    height: 100%;
   }
 
-  .contentLogo {
-    position: absolute;
-    top: 15px;
-    left: 15px;
+  .card {
+    width: 100%;
+    height: 100%;
     display: flex;
-    align-items: center;
-    font-weight: 700;
-    color: ${darkTheme.text};
-
-    img {
-      width: 50px;
-      margin-right: 4px;
-    }
-  }
-
-  .bannerlateral {
-    background-color: #fc6b32;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      width: 80%;
-    }
-  }
-
-  .toggleTheme {
-    z-index: 9999;
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-  }
-
-  .contentCard {
-    grid-column: 1;
-    background-color: ${({ theme }) => theme.bgtotal};
-    color: ${(props) => props.theme.text};
-    z-index: 100;
-    position: relative;
-    gap: 30px;
-    display: flex;
-    padding: 20px;
-    box-shadow: 8px 5px 18px 3px rgba(0, 0, 0, 0.35);
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    align-items: center;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 
-    @media ${device.tablet} {
-      grid-column: 2;
-      width: 100%;
-      height: 100%;
-    }
-
-    .card {
-      margin-top: -40px;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      @media ${device.laptop} {
-        width: 50%;
-      }
+    @media ${device.laptop} {
+      width: 50%;
     }
   }
 `;
@@ -100,25 +57,6 @@ export const SubTitle = styled.h3`
   font-weight: 700;
   margin-top: -8px;
   margin-bottom: 30px;
-`;
-
-export const HelpText = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-
-  span {
-    text-align: left;
-    width: 300px;
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    color: #8d8d8d;
-    font-size: 12px;
-    font-weight: 500;
-  }
 `;
 
 export const FormWrapper = styled.form`

@@ -3,10 +3,10 @@ import { useNavigate } from "react-router";
 import {
   ContainerBtn,
   FormWrapper,
-  LoginContainer,
   Title,
   SubTitle,
-  HelpText,
+  Container,
+  CardContainer,
 } from "./index.styles";
 import { useAuthStore } from "../../../store/useAuthStore";
 import { InputComponent } from "../../atoms";
@@ -15,17 +15,14 @@ import {
   initialFormLogin,
 } from "../../../constants/initialFormLogin";
 import { LoginSchemaRules } from "../../../formValidations/validationLoginSchemaRules";
-import CarInventory from "../../../assets/car-inventory.svg";
-import inventarioslogo from "../../../assets/inventarioslogo.png";
-import { ButtonBase, ToggleTheme } from "../../molecules";
-import { useDeviceType } from "../../../hooks/useDeviceType";
+import { ButtonBase } from "../../molecules";
 import { errorGenericMessages } from "../../../constants/errorGenericMessages";
 import { useErrorGenericHandler } from "../../../hooks/useErrorGenericHandler";
 import { AtSign, Lock } from "../../../assets/svg";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const deviceType = useDeviceType();
+
   const { errorGenericHandler } = useErrorGenericHandler();
   const signInWithEmail = useAuthStore((state) => state.signInWithEmail);
 
@@ -81,33 +78,9 @@ export const LoginForm = () => {
   );
 
   return (
-    <LoginContainer>
-      {deviceType === "laptop" || deviceType === "desktop" ? (
-        <>
-          <div className="contentLogo">
-            <img src={inventarioslogo} alt="Logo" />
-            <span>StockPRO</span>
-          </div>
-
-          <div className="bannerlateral">
-            <img src={CarInventory} alt="Logo" />
-          </div>
-        </>
-      ) : null}
-
-      <div className="toggleTheme">
-        <ToggleTheme />
-      </div>
-
-      <div className="contentCard">
+    <Container>
+      <CardContainer>
         <div className="card">
-          <HelpText>
-            <span>
-              Puedes crear una cuenta nueva o solicitar a tu empleador una.{" "}
-            </span>
-            {/* <MdOutlineInfo /> */}
-          </HelpText>
-
           <Title>StockPRO</Title>
           <SubTitle>Controla tu inventario</SubTitle>
 
@@ -155,7 +128,7 @@ export const LoginForm = () => {
             </ContainerBtn>
           </FormWrapper>
         </div>
-      </div>
-    </LoginContainer>
+      </CardContainer>
+    </Container>
   );
 };
