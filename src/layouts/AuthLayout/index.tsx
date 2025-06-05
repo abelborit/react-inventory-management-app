@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router";
-import { Container } from "./index.styles";
+import { Container, Section } from "./index.styles";
 import { useAuthStore } from "../../store/useAuthStore";
 import { LoaderComponent } from "../../components/molecules";
 import { useSupabaseErrorHandler } from "../../hooks/useSupabaseErrorHandler";
@@ -26,9 +26,9 @@ export const AuthLayout = () => {
 
   return (
     <Container>
-      <section>
+      <Section>
         <Outlet />
-      </section>
+      </Section>
     </Container>
   );
 };
