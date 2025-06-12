@@ -12,6 +12,7 @@ export const Container = styled.div`
   justify-content: center;
   text-align: center;
   position: relative;
+  /* overflow-y: auto; */
 
   @media ${device.tablet} {
     grid-template-columns: 1fr 2fr;
@@ -20,9 +21,13 @@ export const Container = styled.div`
 
 export const ToggleThemeContainer = styled.div`
   z-index: 9999;
-  position: absolute;
+  position: fixed;
   bottom: 15px;
   left: 15px;
+
+  @media ${device.desktopXL} {
+    position: absolute;
+  }
 `;
 
 export const HelpTextContainer = styled.div`
