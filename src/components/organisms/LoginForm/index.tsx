@@ -82,8 +82,8 @@ export const LoginForm = () => {
   );
 
   return (
-    <Container>
-      <CardContainer $isDark={isDark}>
+    <Container $isDark={isDark}>
+      <CardContainer>
         <div className="card">
           <Title>StockPRO</Title>
           <SubTitle>Controla tu inventario</SubTitle>

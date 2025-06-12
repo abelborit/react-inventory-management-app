@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../../../styles/breakpoints";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $isDark: boolean }>`
   width: 100%;
   height: 100%;
   display: flex;
@@ -9,21 +9,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-`;
-
-export const CardContainer = styled.div<{ $isDark: boolean }>`
-  width: 100%;
-  height: 100%;
-  grid-column: 1;
-  color: ${(props) => props.theme.text};
-  z-index: 100;
-  gap: 30px;
-  padding: 20px;
   box-shadow: 8px 5px 18px 3px rgba(0, 0, 0, 0.35);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
   /* background-color: ${({ theme }) => theme.bgtotal}; */
   background-color: ${({ $isDark }) => ($isDark ? "#272727" : "#eaeaea")};
   background-image: ${({ $isDark }) =>
@@ -32,11 +18,28 @@ export const CardContainer = styled.div<{ $isDark: boolean }>`
       : `url("src/assets/background-ligth.png")`};
   background-attachment: fixed;
   background-size: cover;
+`;
+
+export const CardContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  grid-column: 1;
+  color: ${(props) => props.theme.text};
+  z-index: 100;
+  gap: 30px;
+  padding: 5rem 20px 3rem 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 
   @media ${device.tablet} {
     grid-column: 2;
     width: 100%;
     height: 100%;
+    padding: 6rem 20px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .card {
@@ -48,7 +51,7 @@ export const CardContainer = styled.div<{ $isDark: boolean }>`
     align-items: center;
 
     @media ${device.laptop} {
-      width: 50%;
+      width: 60%;
     }
   }
 `;
@@ -68,19 +71,24 @@ export const SubTitle = styled.h3`
 
 export const FormWrapper = styled.form`
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 `;
 
 export const ContainerBtn = styled.div`
-  margin-top: 15px;
+  margin-top: 10px;
+  padding-bottom: 15px;
   display: flex;
+  flex-direction: column;
   gap: 1rem;
   justify-content: center;
   align-items: center;
 
   button {
+    width: 100%;
+    max-width: 320px;
     font-weight: 700;
     font-size: 16px;
 
@@ -90,5 +98,9 @@ export const ContainerBtn = styled.div`
       border: 3px solid #ccc;
       cursor: not-allowed;
     }
+  }
+
+  @media ${device.tablet} {
+    flex-direction: row;
   }
 `;
