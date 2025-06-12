@@ -38,7 +38,7 @@ export const BannerlateralContainer = styled.div`
 
   span {
     font-style: italic;
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: bold;
     color: ${darkTheme.body};
   }
