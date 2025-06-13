@@ -68,6 +68,15 @@ export const ErrorText = styled.span`
   display: block;
 `;
 
+export const ArrowWrapper = styled.div<{ $isOpen: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+  transform: rotate(${(props) => (props.$isOpen ? "180deg" : "0deg")});
+`;
+
 export const DropdownWrapper = styled.div`
   width: 100%;
   position: relative;
@@ -80,6 +89,10 @@ export const DropdownHeader = styled.div<{
   $isValid?: boolean;
   $isOpen?: boolean;
 }>`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
   text-align: left;
   padding: 0.5rem;
   font-size: 0.875rem;
@@ -126,7 +139,7 @@ export const DropdownList = styled.div<{ $isOpen: boolean }>`
   transform: ${(props) =>
     props.$isOpen ? "translateY(0)" : "translateY(-8px)"};
   pointer-events: ${(props) => (props.$isOpen ? "auto" : "none")};
-  background-color: #f1f1f1;
+  background-color: #d1d1d1;
 `;
 
 export const DropdownItem = styled.span`
@@ -138,6 +151,6 @@ export const DropdownItem = styled.span`
 
   &:hover {
     /* background-color: ${({ theme }) => theme.bg5}; */
-    background-color: #d3d3d3;
+    background-color: #b3b3b3;
   }
 `;

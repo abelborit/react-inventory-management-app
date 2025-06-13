@@ -10,8 +10,10 @@ import {
   DropdownHeader,
   DropdownList,
   DropdownItem,
+  ArrowWrapper,
 } from "./index.styles";
 import { SvgIconComponent } from "../SvgIconComponent";
+import { ChevronDown } from "../../../assets/svg";
 
 export interface DropdownComponentOption {
   label: string;
@@ -113,6 +115,14 @@ export const DropdownComponent = ({
             $isValid={isValid}
           >
             {selectedLabel || placeholder}
+
+            <ArrowWrapper $isOpen={isOpen}>
+              <SvgIconComponent
+                icon={ChevronDown}
+                size="20px"
+                color="#454545"
+              />
+            </ArrowWrapper>
           </DropdownHeader>
 
           <DropdownList $isOpen={isOpen} role="listbox">
