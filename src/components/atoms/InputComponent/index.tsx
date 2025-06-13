@@ -14,7 +14,7 @@ interface InputComponentProps {
   icon: null | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
   label: string;
   name: string;
-  type: string;
+  type: React.HTMLInputTypeAttribute;
   placeholder: string;
   showCharactersLength: boolean;
   value: string;
@@ -39,7 +39,7 @@ export const InputComponent = ({
   icon,
   label,
   name,
-  type,
+  type = "text",
   placeholder,
   showCharactersLength,
   value,

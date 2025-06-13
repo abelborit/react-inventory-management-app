@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { darkTheme } from "../../../styles/themes";
 
 export const Container = styled.div`
   width: 100%;
@@ -31,6 +32,13 @@ export const Input = styled.input<{
   border-radius: 4px 4px 0 0;
   outline: none;
   transition: border-color 0.3s ease;
+  color: ${() => darkTheme.body};
+  /* color: ${(props) =>
+    props.$isError
+      ? "#e53e3e"
+      : props.$isValid
+      ? "#38a169"
+      : darkTheme.body}; */
 
   ${(props) =>
     props.$isError &&
@@ -43,6 +51,18 @@ export const Input = styled.input<{
     css`
       border-color: #38a169;
     `}
+
+  /* quitar los spinners (flechas para aumentar o disminuir) de los inputs type="number" */
+  &[type="number"] {
+    appearance: textfield; /* Firefox */
+  }
+
+  /* Chrome, Safari, Edge */
+  &[type="number"]::-webkit-outer-spin-button,
+  &[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 export const LabelContainer = styled.div`
