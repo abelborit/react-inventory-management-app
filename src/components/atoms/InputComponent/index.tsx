@@ -27,6 +27,7 @@ interface InputComponentProps {
   ) => void;
   error?: string;
   touched?: boolean;
+  disabled?: boolean;
   // isFormValid?: boolean;
 
   /* y también puede recibir X cantidad de propiedades adicionales que queramos pasarle y se puede ir colocando una a una o sino también de la siguiente forma usando un comodín "[x: string]: any;" que significa que puede recibir cualquier llave que será de tipo string y su valor será cualquier cosa y con este comodín nos permite agregar cualquier cantidad de propiedades adcionales */
@@ -48,6 +49,7 @@ export const InputComponent = ({
   setFieldTouched,
   error,
   touched,
+  disabled = false,
 }: InputComponentProps) => {
   const handleChangeManual = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event);
@@ -90,6 +92,7 @@ export const InputComponent = ({
           onBlur={onBlur}
           $isError={isError}
           $isValid={isValid}
+          disabled={disabled}
           // {...rest}
         />
       </InputContainer>

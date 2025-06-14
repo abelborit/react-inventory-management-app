@@ -63,6 +63,11 @@ export const Input = styled.input<{
     -webkit-appearance: none;
     margin: 0;
   }
+
+  &:disabled {
+    background-color: #888;
+    cursor: not-allowed;
+  }
 `;
 
 export const LabelContainer = styled.div`
