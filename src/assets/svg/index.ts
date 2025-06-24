@@ -15,6 +15,13 @@ import ShieldCheck from "./shield-check.svg?react";
 import CircleHelp from "./circle-help.svg?react";
 import AtSign from "./at-sign.svg?react";
 import Lock from "./lock.svg?react";
+import BookUser from "./book-user.svg?react";
+import ContactRound from "./contact-round.svg?react";
+import FileUser from "./file-user.svg?react";
+import Hash from "./hash.svg?react";
+import MapPinHouse from "./map-pin-house.svg?react";
+import ShieldEllipsis from "./shield-ellipsis.svg?react";
+import ShieldUser from "./shield-user.svg?react";
 
 export {
   ChartLine,
@@ -33,4 +40,11 @@ export {
   CircleHelp,
   AtSign,
   Lock,
+  BookUser,
+  ContactRound,
+  FileUser,
+  Hash,
+  MapPinHouse,
+  ShieldEllipsis,
+  ShieldUser,
 };
