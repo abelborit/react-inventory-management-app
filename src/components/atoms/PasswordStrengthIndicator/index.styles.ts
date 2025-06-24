@@ -10,10 +10,10 @@ export const List = styled.ul`
   margin-top: -0.25rem;
 `;
 
-export const ListItem = styled.li<{ passed: boolean }>`
+export const ListItem = styled.li<{ $passed: boolean }>`
   display: flex;
   align-items: center;
-  color: ${(props) => (props.passed ? "#38a169" : "#a0aec0")};
+  color: ${(props) => (props.$passed ? "#38a169" : "#a0aec0")};
 `;
 
 export const Symbol = styled.span`

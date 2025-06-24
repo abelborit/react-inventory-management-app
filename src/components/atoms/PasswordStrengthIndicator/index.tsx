@@ -24,7 +24,7 @@ export const PasswordStrengthIndicator = ({
         const passed = rule.regex.test(password);
 
         return (
-          <ListItem key={index} passed={passed}>
+          <ListItem key={index} $passed={passed}>
             <Symbol>{passed ? "✔" : "✘"}</Symbol>
             {rule.message}
           </ListItem>
