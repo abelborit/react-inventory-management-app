@@ -23,7 +23,9 @@ interface UserStore {
   fetchUsers: () => Promise<void>;
   fetchUserById: (id: number) => Promise<void>;
   createUser: (
-    props: Omit<UserInsertProps, "user_type"> & { user_type?: UserType }
+    props: Omit<UserInsertProps, "user_type"> & {
+      user_type?: UserType | string;
+    }
   ) => Promise<User | null>;
   updateUserById: (
     id: number,

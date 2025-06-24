@@ -3,12 +3,12 @@ import { UserInsertProps } from "../interface/user.interface";
 export const initialFormRegister: UserInsertProps = {
   name: "",
   lastname: "",
-  email: "",
   document_type: "",
   document_number: "",
   phone: "",
   adress: "",
   user_type: "",
+  email: "",
   password: "",
 };
 
