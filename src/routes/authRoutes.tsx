@@ -23,5 +23,16 @@ export const authRoutes = {
         return { Component: LoginPage };
       },
     },
+
+    {
+      path: "register",
+      HydrateFallback: LoaderComponent,
+      async lazy() {
+        const { RegisterPage } = await import(
+          "../pages/RegisterPage/index.tsx"
+        );
+        return { Component: RegisterPage };
+      },
+    },
   ],
 };

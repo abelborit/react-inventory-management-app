@@ -126,8 +126,7 @@ export const LoginForm = () => {
                 bgcolor="#fff"
                 textcolor="#333"
                 sidebarOpen={true}
-                handleClick={() => {}}
-                disabled={!formik.isValid || formik.isSubmitting}
+                handleClick={() => navigate("/auth/register")}
               />
             </ContainerBtn>
           </FormWrapper>
