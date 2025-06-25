@@ -17,8 +17,6 @@ import {
   PasswordStrengthIndicator,
 } from "../../atoms";
 import { ButtonBase } from "../../molecules";
-import { errorGenericMessages } from "../../../constants/errorGenericMessages";
-import { useErrorGenericHandler } from "../../../hooks/useErrorGenericHandler";
 import {
   AtSign,
   BookUser,
@@ -37,6 +35,7 @@ import {
 } from "../../../interface/user.interface";
 import { initialFormRegister } from "../../../constants/initialFormRegister";
 import { RegisterSchemaRules } from "../../../formValidations/validationRegisterSchemaRules";
+import { useMutation } from "@tanstack/react-query";
 
 export const RegisterForm = () => {
   const { currentTheme } = useThemeContext();
@@ -44,8 +43,51 @@ export const RegisterForm = () => {
 
   const navigate = useNavigate();
 
-  const { errorGenericHandler } = useErrorGenericHandler();
   const createUser = useUserStore((state) => state.createUser);
+
+  /* usando "@tanstack/react-query" hace que el código sea más escalable, mejora la interacción con el caché y sincronización de datos */
+  const createUserMutation = useMutation({
+    mutationKey: ["create-user"],
+    mutationFn: async (userData: UserInsertProps) => {
+      const user = await createUser({
+        name: userData.name,
+        lastname: userData.lastname,
+        email: userData.email,
+        document_type: userData.document_type,
+        document_number: userData.document_number,
+        phone: userData.phone,
+        adress: userData.adress,
+        user_type: userData.user_type,
+        password: userData.password,
+      });
+
+      // const user = await createUser({
+      //   name: "Nombre Employee",
+      //   lastname: "Apellido Employee",
+      //   email: "employee@employee.com",
+      //   document_type: "DNI",
+      //   document_number: "12345678",
+      //   phone: "123456789",
+      //   adress: "Dirección Employee V-123",
+      //   user_type: "employee",
+      //   password: "Zx123456!",
+      // });
+
+      if (!user) {
+        throw new Error("Invalid information to register user");
+      }
+
+      return user;
+    },
+    retry: 2, // Reintenta 2 veces si falla
+    onSuccess: (responseSuccess) => {
+      console.log("[createUserMutation]", responseSuccess);
+      navigate("/dashboard/home");
+    },
+    onError: (error) => {
+      console.error("[RegisterForm] Register error:", error);
+    },
+  });
 
   /* inicializar formik */
   const formik = useFormik<UserInsertProps>({
@@ -56,26 +98,7 @@ export const RegisterForm = () => {
     validateOnMount: true,
     onSubmit: async (values, { setSubmitting }) => {
       try {
-        const user = await createUser({
-          name: values.name,
-          lastname: values.lastname,
-          email: values.email,
-          document_type: values.document_type,
-          document_number: values.document_number,
-          phone: values.phone,
-          adress: values.adress,
-          user_type: values.user_type,
-          password: values.password,
-        });
-
-        if (!user) {
-          throw new Error("Invalid information to register user");
-        }
-
-        navigate("/dashboard/home");
-      } catch (error: unknown) {
-        console.error("[RegisterForm] Register error:", error);
-        errorGenericHandler(errorGenericMessages.internalServerError, null);
+        await createUserMutation.mutateAsync(values);
       } finally {
         setSubmitting(false);
       }
